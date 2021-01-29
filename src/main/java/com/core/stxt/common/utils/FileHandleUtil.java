@@ -40,7 +40,6 @@ public class FileHandleUtil {
         createDirIfNotExists();
         String filename = UUID.randomUUID().toString().replace("-", "")+relfilename;
         String resultPath = fileDir + path + filename;
-
         //存文件
         File uploadFile = new File(absolutePath, staticDir + resultPath);
         try {
