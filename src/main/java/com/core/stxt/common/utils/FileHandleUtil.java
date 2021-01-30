@@ -1,13 +1,14 @@
 package com.core.stxt.common.utils;
 
 
+import com.core.stxt.common.model.Result;
 import org.apache.commons.io.FileUtils;
 import org.springframework.util.ResourceUtils;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.util.UUID;
 
 /**
@@ -88,5 +89,21 @@ public class FileHandleUtil {
             return file.delete();
         }
         return false;
+    }
+    //上传文件
+    @PostMapping("/upload")
+    public Result upload(@RequestParam("file") MultipartFile file) throws IOException {
+        File file1 = new File("src\\main\\webapp\\WEB-INF\\file\\ddd.docx");
+        System.out.println(file1.getAbsolutePath());
+        FileOutputStream fos = new FileOutputStream(file1);
+        FileInputStream fis = (FileInputStream) file.getInputStream();
+        byte[] buf = new byte[10];
+        int len;
+        while((len = fis.read(buf))!=-1){
+            fos.write(buf,0,len);
+        }
+        fos.close();
+        fis.close();
+        return Result.ok();
     }
 }

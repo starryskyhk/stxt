@@ -4,6 +4,10 @@ server:
 #    #项目路径
 #    context-path: /yjxt
 spring:
+  servlet:
+    multipart:
+      max-file-size: 500MB
+      max-request-size: 500MB
   mvc:
     view:
       prefix: /WEB-INF/jsp/
