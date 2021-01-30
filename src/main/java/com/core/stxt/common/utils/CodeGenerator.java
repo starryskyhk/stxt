@@ -50,7 +50,7 @@ public class CodeGenerator {
         gc.setOutputDir(projectPath + "/src/main/java");
         gc.setAuthor("孙和美");
         gc.setOpen(false);
-        // gc.setSwagger2(true); 实体属性 Swagger2 注解
+        gc.setSwagger2(true); //实体属性 Swagger2 注解
         mpg.setGlobalConfig(gc);
 
         // 数据源配置
@@ -123,7 +123,7 @@ public class CodeGenerator {
 //        strategy.setSuperEntityClass("你自己的父类实体,没有就不用设置!");
         strategy.setEntityLombokModel(true);
         strategy.setRestControllerStyle(true);
-        strategy.setInclude(scanner("表名"));
+      // strategy.setInclude(scanner("表名"));
         // 公共父类
 //        strategy.setSuperControllerClass("com.wnsf.yjxt.sys");
         // 写于父类中的公共字段

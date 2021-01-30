@@ -1,7 +1,7 @@
 package com.core.stxt.common.utils;
 
 
-import com.core.stxt.common.model.Result;
+import com.core.stxt.common.model.R;
 import org.apache.commons.io.FileUtils;
 import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -92,7 +92,7 @@ public class FileHandleUtil {
     }
     //上传文件
     @PostMapping("/upload")
-    public Result upload(@RequestParam("file") MultipartFile file) throws IOException {
+    public R upload(@RequestParam("file") MultipartFile file) throws IOException {
         File file1 = new File("src\\main\\webapp\\WEB-INF\\file\\ddd.docx");
         System.out.println(file1.getAbsolutePath());
         FileOutputStream fos = new FileOutputStream(file1);
@@ -104,6 +104,6 @@ public class FileHandleUtil {
         }
         fos.close();
         fis.close();
-        return Result.ok();
+        return R.ok();
     }
 }
