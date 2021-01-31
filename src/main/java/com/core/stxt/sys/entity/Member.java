@@ -33,7 +33,7 @@ public class Member implements Serializable {
     @ApiModelProperty(value = "成员id")
     private String userId;
 
-    @ApiModelProperty(value = "成员状态(0—正常，1——申请退出中，)")
+    @ApiModelProperty(value = "成员状态(0—正常，1——申请退出中，2——申请加入中")
     private Integer status;
 
     @ApiModelProperty(value = "社团id")

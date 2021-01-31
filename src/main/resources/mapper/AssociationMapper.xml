@@ -2,4 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.core.stxt.sys.mapper.AssociationMapper">
 
+    <select id="selectNames" resultType="java.lang.String">
+          select name from user where id in(select user_id from member where association_id = #{id}  )
+    </select>
+
 </mapper>
