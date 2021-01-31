@@ -8,7 +8,6 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 
-
 @SpringBootApplication
 @EnableTransactionManagement //开启事务
 @EnableCaching(proxyTargetClass = true)//强制使用cglib代理
