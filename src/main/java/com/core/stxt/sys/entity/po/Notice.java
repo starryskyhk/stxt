@@ -1,4 +1,4 @@
-package com.core.stxt.sys.entity;
+package com.core.stxt.sys.entity.po;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
@@ -12,37 +12,40 @@ import lombok.experimental.Accessors;
 
 /**
  * <p>
- * 社团成员表
+ * 公告表
  * </p>
  *
  * @author 孙和美
- * @since 2021-01-30
+ * @since 2021-02-03
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@ApiModel(value="Member对象", description="社团成员表")
-public class Member implements Serializable {
+@ApiModel(value="Notice对象", description="公告表")
+public class Notice implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @ApiModelProperty(value = "成员表id")
+    @ApiModelProperty(value = "公告id")
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
-    @ApiModelProperty(value = "成员id")
+    @ApiModelProperty(value = "公告标题")
+    private String title;
+
+    @ApiModelProperty(value = "公告内容")
+    private String content;
+
+    @ApiModelProperty(value = "浏览次数")
+    private Integer count;
+
+    @ApiModelProperty(value = "发布者id")
     private String userId;
-
-    @ApiModelProperty(value = "成员状态(0—正常，1——申请退出中，2——申请加入中")
-    private Integer status;
-
-    @ApiModelProperty(value = "社团id")
-    private Integer associationId;
 
     @ApiModelProperty(value = "创建时间")
     private LocalDateTime createTime;
 
-    @ApiModelProperty(value = "更新时间")
+    @ApiModelProperty(value = "更改时间")
     private LocalDateTime updateTime;
 
 

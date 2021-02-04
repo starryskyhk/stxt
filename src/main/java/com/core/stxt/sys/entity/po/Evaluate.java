@@ -1,4 +1,4 @@
-package com.core.stxt.sys.entity;
+package com.core.stxt.sys.entity.po;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
@@ -12,35 +12,32 @@ import lombok.experimental.Accessors;
 
 /**
  * <p>
- * 评论表
+ * 活动评价表
  * </p>
  *
  * @author 孙和美
- * @since 2021-01-30
+ * @since 2021-02-03
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@ApiModel(value="Comment对象", description="评论表")
-public class Comment implements Serializable {
+@ApiModel(value="Evaluate对象", description="活动评价表")
+public class Evaluate implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @ApiModelProperty(value = "评论id")
+    @ApiModelProperty(value = "评价id")
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
-    @ApiModelProperty(value = "评论内容")
+    @ApiModelProperty(value = "评价内容")
     private String content;
 
-    @ApiModelProperty(value = "父评论id")
-    private Integer parentId;
+    @ApiModelProperty(value = "活动id")
+    private Integer activityId;
 
-    @ApiModelProperty(value = "用户id")
+    @ApiModelProperty(value = "评论用户id")
     private String userId;
-
-    @ApiModelProperty(value = "模块(0——社团，1——活动)")
-    private Integer module;
 
     @ApiModelProperty(value = "创建时间")
     private LocalDateTime createTime;

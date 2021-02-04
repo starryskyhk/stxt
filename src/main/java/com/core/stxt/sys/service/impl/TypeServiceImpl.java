@@ -1,6 +1,6 @@
 package com.core.stxt.sys.service.impl;
 
-import com.core.stxt.sys.entity.Type;
+import com.core.stxt.sys.entity.po.Type;
 import com.core.stxt.sys.mapper.TypeMapper;
 import com.core.stxt.sys.service.ITypeService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
  * </p>
  *
  * @author 孙和美
- * @since 2021-01-30
+ * @since 2021-02-03
  */
 @Service
 public class TypeServiceImpl extends ServiceImpl<TypeMapper, Type> implements ITypeService {

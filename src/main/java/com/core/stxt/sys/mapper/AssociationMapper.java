@@ -1,9 +1,7 @@
 package com.core.stxt.sys.mapper;
 
-import com.core.stxt.sys.entity.Association;
+import com.core.stxt.sys.entity.po.Association;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-
-import java.util.List;
 
 /**
  * <p>
@@ -11,13 +9,8 @@ import java.util.List;
  * </p>
  *
  * @author 孙和美
- * @since 2021-01-30
+ * @since 2021-02-03
  */
 public interface AssociationMapper extends BaseMapper<Association> {
-    /**
-     * 查询id为{#id}的社团的全部成员的姓名
-     * @param id
-     * @return
-     */
-    List<String> selectNames(Integer id);
+
 }

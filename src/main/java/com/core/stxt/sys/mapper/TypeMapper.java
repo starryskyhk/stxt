@@ -1,6 +1,6 @@
 package com.core.stxt.sys.mapper;
 
-import com.core.stxt.sys.entity.Type;
+import com.core.stxt.sys.entity.po.Type;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
@@ -9,7 +9,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * </p>
  *
  * @author 孙和美
- * @since 2021-01-30
+ * @since 2021-02-03
  */
 public interface TypeMapper extends BaseMapper<Type> {
 

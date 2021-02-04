@@ -7,8 +7,12 @@
 </head>
 <body>
     Hello World
-    <form action="/sys/user/upload" method="post" enctype="multipart/form-data">
-        <input type="file" name="file" value="请上传图片"/>
+    <img src="\img.jpg">
+    <form action="/sys/association/upload" method="post" enctype="multipart/form-data">
+<%--        社团名称：<input type="text" name="name" placeholder="请输入社团名称">--%>
+<%--        <br/>--%>
+<%--        社团简介：<input type="text" name="brief" placeholder="请输入社团简介">--%>
+        图片：<input type="file" name="file" value="请上传图片"/>
         <input type="submit" value="提交">
     </form>
 </body>

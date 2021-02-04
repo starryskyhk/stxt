@@ -1,4 +1,4 @@
-package com.core.stxt.sys.entity;
+package com.core.stxt.sys.entity.po;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
@@ -16,7 +16,7 @@ import lombok.experimental.Accessors;
  * </p>
  *
  * @author 孙和美
- * @since 2021-01-30
+ * @since 2021-02-03
  */
 @Data
 @EqualsAndHashCode(callSuper = false)

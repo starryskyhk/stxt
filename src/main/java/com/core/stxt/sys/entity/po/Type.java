@@ -1,4 +1,4 @@
-package com.core.stxt.sys.entity;
+package com.core.stxt.sys.entity.po;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
@@ -12,35 +12,29 @@ import lombok.experimental.Accessors;
 
 /**
  * <p>
- * 公告表
+ * 类型表，即社团或活动的类型
  * </p>
  *
  * @author 孙和美
- * @since 2021-01-30
+ * @since 2021-02-03
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@ApiModel(value="Notice对象", description="公告表")
-public class Notice implements Serializable {
+@ApiModel(value="Type对象", description="类型表，即社团或活动的类型")
+public class Type implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @ApiModelProperty(value = "公告id")
+    @ApiModelProperty(value = "类型id")
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
-    @ApiModelProperty(value = "公告标题")
-    private String title;
+    @ApiModelProperty(value = "类型名称")
+    private String name;
 
-    @ApiModelProperty(value = "公告内容")
-    private String content;
-
-    @ApiModelProperty(value = "浏览次数")
-    private Integer count;
-
-    @ApiModelProperty(value = "发布者id")
-    private String userId;
+    @ApiModelProperty(value = "类型模块(0——社团，1——活动)")
+    private Integer module;
 
     @ApiModelProperty(value = "创建时间")
     private LocalDateTime createTime;

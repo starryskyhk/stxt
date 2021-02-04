@@ -1,6 +1,6 @@
 package com.core.utils;
 
-import com.core.stxt.sys.entity.User;
+import com.core.stxt.sys.entity.po.User;
 import org.junit.jupiter.api.Test;
 
 /**

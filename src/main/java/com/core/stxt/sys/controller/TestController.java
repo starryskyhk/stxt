@@ -1,8 +1,9 @@
 package com.core.stxt.sys.controller;
 
-import com.core.stxt.sys.entity.User;
+import com.core.stxt.sys.entity.po.User;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 /**
  * @ClassName : TestController

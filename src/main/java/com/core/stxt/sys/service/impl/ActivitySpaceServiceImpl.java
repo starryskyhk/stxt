@@ -1,6 +1,6 @@
 package com.core.stxt.sys.service.impl;
 
-import com.core.stxt.sys.entity.ActivitySpace;
+import com.core.stxt.sys.entity.po.ActivitySpace;
 import com.core.stxt.sys.mapper.ActivitySpaceMapper;
 import com.core.stxt.sys.service.IActivitySpaceService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
  * </p>
  *
  * @author 孙和美
- * @since 2021-01-30
+ * @since 2021-02-03
  */
 @Service
 public class ActivitySpaceServiceImpl extends ServiceImpl<ActivitySpaceMapper, ActivitySpace> implements IActivitySpaceService {

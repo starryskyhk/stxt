@@ -1,6 +1,6 @@
 package com.core.stxt.sys.mapper;
 
-import com.core.stxt.sys.entity.Comment;
+import com.core.stxt.sys.entity.po.Comment;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
@@ -9,7 +9,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * </p>
  *
  * @author 孙和美
- * @since 2021-01-30
+ * @since 2021-02-03
  */
 public interface CommentMapper extends BaseMapper<Comment> {
 

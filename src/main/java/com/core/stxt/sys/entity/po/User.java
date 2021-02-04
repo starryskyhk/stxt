@@ -1,4 +1,4 @@
-package com.core.stxt.sys.entity;
+package com.core.stxt.sys.entity.po;
 
 import java.time.LocalDateTime;
 import java.io.Serializable;
@@ -14,13 +14,14 @@ import lombok.experimental.Accessors;
  * </p>
  *
  * @author 孙和美
- * @since 2021-01-30
+ * @since 2021-02-03
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
 @ApiModel(value="User对象", description="用户表")
 public class User implements Serializable {
+
     private static final long serialVersionUID = 1L;
 
     @ApiModelProperty(value = "用户id，即学号或工号")
