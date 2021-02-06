@@ -8,6 +8,7 @@ import com.core.stxt.sys.service.IAssociationService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +16,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.*;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * <p>
@@ -37,28 +40,34 @@ public class AssociationController {
      * @return
      */
     @ApiOperation(value = "添加社团")
-    @PutMapping("/addAssociation")
-    public R addAssociation(Association association, MultipartFile imgFile) throws IOException {
-        System.out.println(association);
-        System.out.println(new File(imgFile.getOriginalFilename()).getAbsolutePath());
-        return R.ok("创建成功");
+    @PutMapping("")
+    public R addAssociation(Association association) throws IOException {
+        associationService.save(association);
+        return R.ok("添加成功");
     }
-
-    //上传文件
-    @PostMapping("/upload")
-    public R upload(@RequestParam("file") MultipartFile file) throws IOException {
-        File file1 = new File(ResourceUtils.getURL("classpath:").getPath()+"static/"+"5.jpg");
-        System.out.println(file1.getAbsolutePath());
-        FileOutputStream fos = new FileOutputStream(file1);
-        FileInputStream fis = (FileInputStream) file.getInputStream();
-        byte[] buf = new byte[10];
-        int len;
-        while((len = fis.read(buf))!=-1){
-            fos.write(buf,0,len);
-        }
-        fos.close();
-        fis.close();
-        return R.ok();
+    @ApiOperation(value = "删除社团")
+    @DeleteMapping("{id}")
+    public R delete(@PathVariable("id") Integer id){
+        associationService.removeById(id);
+        return R.ok("删除成功");
+    }
+    @ApiOperation(value = "批量删除社团")
+    @DeleteMapping("")
+    public R delete(String ids){
+        associationService.removeByIds(Arrays.asList(ids.split(",")));
+        return R.ok("批量删除成功");
+    }
+    @ApiOperation(value = "更改社团信息")
+    @PostMapping("")
+    public R update(Association association){
+        associationService.updateById(association);
+        return R.ok("更改成功");
+    }
+    @ApiOperation(value = "查询所有社团")
+    @GetMapping("")
+    public List<Association> getAssociationList(){
+        List<Association> associationList = associationService.list();
+        return associationList;
     }
 
 
