@@ -1,7 +1,7 @@
 package com.core.stxt.sys.mapper;
 
-import com.core.stxt.sys.entity.po.Comment;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.core.stxt.sys.entity.po.Comment;
 
 /**
  * <p>

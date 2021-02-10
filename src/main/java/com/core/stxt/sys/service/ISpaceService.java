@@ -1,16 +1,16 @@
 package com.core.stxt.sys.service;
 
+import com.core.stxt.sys.entity.po.Space;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.core.stxt.sys.entity.po.Notice;
 
 /**
  * <p>
- * 公告表 服务类
+ *  服务类
  * </p>
  *
  * @author 孙和美
- * @since 2021-02-03
+ * @since 2021-02-09
  */
-public interface INoticeService extends IService<Notice> {
+public interface ISpaceService extends IService<Space> {
 
 }

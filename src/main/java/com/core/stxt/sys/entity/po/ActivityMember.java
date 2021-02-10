@@ -12,7 +12,7 @@ import lombok.experimental.Accessors;
 
 /**
  * <p>
- * 社团成员表
+ * 活动成员表
  * </p>
  *
  * @author 孙和美
@@ -21,31 +21,31 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@ApiModel(value="Member对象", description="社团成员表")
-public class Member implements Serializable {
+@ApiModel(value="ActivityMember对象", description="活动成员表")
+public class ActivityMember implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @ApiModelProperty(value = "成员表id")
+    @ApiModelProperty(value = "活动成员表id")
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
-    @ApiModelProperty(value = "成员状态(0—正常，1——申请退出中，2——申请加入中)")
+    @ApiModelProperty(value = "成员状态(0——待审批，1——已通过，2——已拒绝，3——已退出)")
     private Integer status;
 
-    @ApiModelProperty(value = "社团职位")
-    private String rank;
+    @ApiModelProperty(value = "备注")
+    private String remark;
 
-    @ApiModelProperty(value = "成员id")
+    @ApiModelProperty(value = "用户id")
     private String userId;
 
-    @ApiModelProperty(value = "社团id")
-    private Integer associationId;
+    @ApiModelProperty(value = "活动id")
+    private Integer activityId;
 
     @ApiModelProperty(value = "创建时间")
     private LocalDateTime createTime;
 
-    @ApiModelProperty(value = "更新时间")
+    @ApiModelProperty(value = "更改时间")
     private LocalDateTime updateTime;
 
 

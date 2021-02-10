@@ -1,7 +1,7 @@
 package com.core.stxt.sys.mapper;
 
-import com.core.stxt.sys.entity.po.Role;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.core.stxt.sys.entity.po.Role;
 
 /**
  * <p>

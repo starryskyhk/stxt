@@ -16,7 +16,7 @@ import lombok.experimental.Accessors;
  * </p>
  *
  * @author 孙和美
- * @since 2021-02-03
+ * @since 2021-02-09
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -26,15 +26,24 @@ public class ActivitySpace implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @ApiModelProperty(value = "场地id")
+    @ApiModelProperty(value = "活动场地id")
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
-    @ApiModelProperty(value = "场地名称")
-    private String name;
+    @ApiModelProperty(value = "开始时间")
+    private LocalDateTime beginTime;
 
-    @ApiModelProperty(value = "社团id")
-    private Integer associationId;
+    @ApiModelProperty(value = "结束时间")
+    private LocalDateTime endTime;
+
+    @ApiModelProperty(value = "场地状态(0—未开始,1—进行中,2—已结束)")
+    private Integer status;
+
+    @ApiModelProperty(value = "活动id")
+    private Integer activityId;
+
+    @ApiModelProperty(value = "场地id")
+    private Integer spaceId;
 
     @ApiModelProperty(value = "创建时间")
     private LocalDateTime createTime;

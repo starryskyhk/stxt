@@ -16,7 +16,7 @@ import lombok.experimental.Accessors;
  * </p>
  *
  * @author 孙和美
- * @since 2021-02-03
+ * @since 2021-02-09
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -41,6 +41,9 @@ public class Comment implements Serializable {
 
     @ApiModelProperty(value = "模块(0——社团，1——活动)")
     private Integer module;
+
+    @ApiModelProperty(value = "评论的是哪个活动或社团")
+    private Integer moduleId;
 
     @ApiModelProperty(value = "创建时间")
     private LocalDateTime createTime;

@@ -16,7 +16,7 @@ import lombok.experimental.Accessors;
  * </p>
  *
  * @author 孙和美
- * @since 2021-02-03
+ * @since 2021-02-09
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -36,14 +36,8 @@ public class Activity implements Serializable {
     @ApiModelProperty(value = "活动内容")
     private String content;
 
-    @ApiModelProperty(value = "活动地址")
-    private String address;
-
-    @ApiModelProperty(value = "开始时间")
-    private LocalDateTime beginTime;
-
-    @ApiModelProperty(value = "结束时间")
-    private LocalDateTime endTime;
+    @ApiModelProperty(value = "活动地址id")
+    private Integer address;
 
     @ApiModelProperty(value = "活动图片地址")
     private String imgUrl;
@@ -53,6 +47,18 @@ public class Activity implements Serializable {
 
     @ApiModelProperty(value = "活动实际参加人数")
     private Integer num;
+
+    @ApiModelProperty(value = "活动备注")
+    private String remark;
+
+    @ApiModelProperty(value = "活动状态(0——审批中，1——未开始，2——进行中，3——已结束)")
+    private Integer status;
+
+    @ApiModelProperty(value = "活动负责人")
+    private String userId;
+
+    @ApiModelProperty(value = "举办活动的社团id")
+    private Integer associationId;
 
     @ApiModelProperty(value = "创建时间")
     private LocalDateTime createTime;
