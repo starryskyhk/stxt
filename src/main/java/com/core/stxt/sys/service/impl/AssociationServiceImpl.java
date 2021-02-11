@@ -1,5 +1,6 @@
 package com.core.stxt.sys.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.core.stxt.common.utils.FileHandlerUtils;
 import com.core.stxt.sys.entity.po.Association;
 import com.core.stxt.sys.entity.po.Member;
@@ -11,6 +12,7 @@ import com.core.stxt.sys.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
@@ -55,10 +57,11 @@ public class AssociationServiceImpl extends ServiceImpl<AssociationMapper,Associ
     @Override
     public boolean updateAssociationInfo(Association association, MultipartFile file) {
         //1:如果文件不为空，则上传文件，并获取路径设置进去，同时删除原来的文件
-        if(file!=null){
+        if(file!=null&&!StringUtils.isEmpty(file.getOriginalFilename())){
             //1.1:上传文件
             String imgUrl = FileHandlerUtils.upload(file);
             //1.2:删除原来的文件
+            System.out.println("img:"+association.getImgUrl());
             FileHandlerUtils.deleteFile(association.getImgUrl());
             //1.3：设置文件名
             association.setImgUrl(imgUrl);
@@ -82,5 +85,19 @@ public class AssociationServiceImpl extends ServiceImpl<AssociationMapper,Associ
         //删除社团信息，即状态更改为2,已注销状态
         associationMapper.updateById( new Association().setId(id).setStatus(2));
         return true;
+    }
+
+    @Override
+    public List<Association> list(Association association) {
+        //定义查询器
+        QueryWrapper<Association> wrapper = new QueryWrapper<Association>();
+        //设置查询条件
+        wrapper.eq(association.getStatus()!=null,"status",association.getStatus())
+                .eq(association.getTypeId()!=null,"type_id",association.getTypeId())
+                .like(association.getName()!=null,"name",association.getName());
+        //进行查询
+        List<Association> associationList = associationMapper.selectList(wrapper);
+        //返回查询到的列表
+        return associationList;
     }
 }

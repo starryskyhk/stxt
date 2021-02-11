@@ -28,14 +28,14 @@ public class BackController {
 
 
 
-    //TODO:需更改
+    //TODO:需更改访问路径
     //跳转到修改社团信息的页面，并回带数据
-    @GetMapping("/edit/{id}")
+    @GetMapping("/editAssociation/{id}")
     public String edit(@PathVariable("id") Integer id, Model model){
+        //通过id获取到社团对象
         Association association = associationService.getById(id);
+        //将社团对象信息添加到model中
         model.addAttribute("association",association);
-        List<Association> associationList = associationService.list();
-        model.addAttribute("associations",associationList);
         return "test/edit";
     }
 

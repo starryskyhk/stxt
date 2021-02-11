@@ -51,6 +51,7 @@ public class FileHandlerUtils {
     public static boolean deleteFile(String fileName){
         try {
             String path = ROOTPATH+fileName;
+            System.out.println("path:"+path);
             FileUtil.del(new File(path));
             return true;
         } catch (IORuntimeException e) {

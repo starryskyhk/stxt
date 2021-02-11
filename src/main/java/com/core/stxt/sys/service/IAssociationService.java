@@ -44,4 +44,11 @@ public interface IAssociationService extends IService<Association> {
      * @param id 社团id
      */
     boolean deleteById(Integer id);
+
+    /**
+     * 根据条件查询社团列表
+     * @param association 社团字段
+     * @return 返回查询到的社团列表
+     */
+    List<Association> list(Association association);
 }

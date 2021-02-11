@@ -4,6 +4,7 @@ package com.core.stxt.sys.controller;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.core.stxt.common.model.R;
 import com.core.stxt.sys.entity.po.Association;
+import com.core.stxt.sys.entity.vo.MemberInfo;
 import com.core.stxt.sys.service.IAssociationService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -64,11 +65,18 @@ public class AssociationController {
         associationService.updateAssociationInfo(association,file);
         return R.ok("修改成功");
     }
-    @ApiOperation(value = "查询所有社团")
+    @ApiOperation(value = "条件查询所有社团")
     @GetMapping("")
-    public List<Association> getAssociationList(){
-        List<Association> associationList = associationService.list();
+    public List<Association> getAssociationList(Association association){
+        List<Association> associationList = associationService.list(association);
         return associationList;
+    }
+
+    @ApiOperation(value = "查看某社团中的成员")
+    @GetMapping("/{associationId}")
+    public List<MemberInfo> getMember(@PathVariable("associationId") Integer associationId){
+       // List<MemberInfo> memberList = associationService.getMemberByAssociationId(associationId);
+        return null;
     }
 
 
