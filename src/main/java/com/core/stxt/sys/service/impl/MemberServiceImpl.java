@@ -6,6 +6,8 @@ import com.core.stxt.sys.service.IMemberService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * <p>
  * 社团成员表 服务实现类
@@ -16,5 +18,11 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class MemberServiceImpl extends ServiceImpl<MemberMapper, Member> implements IMemberService {
-
+    @Override
+    public boolean deleteIds(List<String> ids) {
+        for(String id : ids){
+            this.removeById(id);
+        }
+        return true;
+    }
 }

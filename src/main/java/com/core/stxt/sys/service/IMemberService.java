@@ -3,6 +3,8 @@ package com.core.stxt.sys.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.core.stxt.sys.entity.po.Member;
 
+import java.util.List;
+
 /**
  * <p>
  * 社团成员表 服务类
@@ -12,5 +14,10 @@ import com.core.stxt.sys.entity.po.Member;
  * @since 2021-02-03
  */
 public interface IMemberService extends IService<Member> {
-
+    /**
+     * 批量删除社团成员
+     * @param ids 社团成员编号
+     * @return
+     */
+    boolean deleteIds(List<String> ids);
 }

@@ -55,7 +55,6 @@ public class AssociationController {
     @DeleteMapping("")
     public R delete(String ids){
         associationService.deleteIds(Arrays.asList(ids.split(",")));
-        associationService.removeByIds(Arrays.asList(ids.split(",")));
         return R.ok("批量删除成功");
     }
     @ApiOperation(value = "更改社团信息")
