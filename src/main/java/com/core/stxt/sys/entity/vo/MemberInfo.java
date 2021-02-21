@@ -20,11 +20,35 @@ import java.time.LocalDateTime;
 @ApiModel(value="社团成员对象", description="存放社团成员相关信息")
 public class MemberInfo {
     /**
-     * 用户信息
+     * 成员表id
      */
-    private User user;
+    private Integer memberId;
     /**
-     * 加入社团的时间
+     * 用户id
      */
-    private LocalDateTime joinTime;
+    private String userId;
+    /**
+     * 用户姓名
+     */
+    private String name;
+    /**
+     * 用户性别
+     */
+    private Integer sex;
+    /**
+     * 用户班级
+     */
+    private String className;
+    /**
+     * 用户电话
+     */
+    private String phone;
+    /**
+     * 用户职位
+     */
+    private String rank;
+    /**
+     * 用户加入时间
+     */
+    private LocalDateTime createTime;
 }

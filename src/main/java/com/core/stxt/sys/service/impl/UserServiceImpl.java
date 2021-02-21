@@ -6,6 +6,8 @@ import com.core.stxt.sys.service.IUserService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * <p>
  * 用户表 服务实现类
@@ -17,4 +19,15 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IUserService {
 
+    @Override
+    public boolean deleteAllById(String id) {
+        //TODO:删除用户逻辑待完成
+        return false;
+    }
+
+    @Override
+    public List<User> list(User user) {
+        //TODO:条件查询用户逻辑待完成
+        return null;
+    }
 }

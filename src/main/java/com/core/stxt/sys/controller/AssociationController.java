@@ -60,7 +60,6 @@ public class AssociationController {
     @ApiOperation(value = "更改社团信息")
     @PostMapping("")
     public R updateAssociation(Association association,MultipartFile file){
-        //  TODO:社团信息修改逻辑，待根据需求完善
         associationService.updateAssociationInfo(association,file);
         return R.ok("修改成功");
     }
@@ -74,8 +73,14 @@ public class AssociationController {
     @ApiOperation(value = "查看某社团中的成员")
     @GetMapping("/{associationId}")
     public List<MemberInfo> getMember(@PathVariable("associationId") Integer associationId){
-       // List<MemberInfo> memberList = associationService.getMemberByAssociationId(associationId);
-        return null;
+        List<MemberInfo> memberList = associationService.getMemberByAssociationId(associationId);
+        return memberList;
+    }
+    @ApiOperation(value = "社团审核")
+    @PostMapping("/audit")
+    public R auditAssociation(Association association){
+        associationService.updateById(association);
+        return R.ok("审核成功");
     }
 
 

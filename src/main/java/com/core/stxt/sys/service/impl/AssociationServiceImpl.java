@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.core.stxt.common.utils.FileHandlerUtils;
 import com.core.stxt.sys.entity.po.Association;
 import com.core.stxt.sys.entity.po.Member;
+import com.core.stxt.sys.entity.vo.MemberInfo;
 import com.core.stxt.sys.mapper.AssociationMapper;
 import com.core.stxt.sys.service.IAssociationService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -44,7 +45,8 @@ public class AssociationServiceImpl extends ServiceImpl<AssociationMapper,Associ
             //3：将该成员信息录入
             Member member = new Member().setUserId(association.getStudentId())
                     .setAssociationId(association.getId())
-                    .setStatus(0);
+                    .setStatus(0)
+                    .setRank("社长");
             memberService.save(member);
         } catch (Exception e) {
             e.printStackTrace();
@@ -99,5 +101,11 @@ public class AssociationServiceImpl extends ServiceImpl<AssociationMapper,Associ
         List<Association> associationList = associationMapper.selectList(wrapper);
         //返回查询到的列表
         return associationList;
+    }
+
+    @Override
+    public List<MemberInfo> getMemberByAssociationId(Integer associationId) {
+        List<MemberInfo> memberInfoList = associationMapper.selectMemberListById(associationId);
+        return memberInfoList;
     }
 }

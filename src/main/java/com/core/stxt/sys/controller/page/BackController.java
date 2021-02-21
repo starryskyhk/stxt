@@ -26,9 +26,8 @@ public class BackController {
     @Autowired
     private IAssociationService  associationService;
 
+    //---------------社团管理
 
-
-    //TODO:需更改访问路径
     //跳转到修改社团信息的页面，并回带数据
     @GetMapping("/editAssociation/{id}")
     public String edit(@PathVariable("id") Integer id, Model model){
@@ -36,7 +35,16 @@ public class BackController {
         Association association = associationService.getById(id);
         //将社团对象信息添加到model中
         model.addAttribute("association",association);
+        //TODO:跳转到修改社团信息的页面，需更改访问路径
         return "test/edit";
+    }
+    //跳转到社团成员页面
+    @GetMapping("/members")
+    public String toMembers(Integer id,Model model){
+        Association association = associationService.getById(id);
+        model.addAttribute("association",association);
+        //TODO:跳转到社团成员页面链接待修改
+        return null;
     }
 
 }

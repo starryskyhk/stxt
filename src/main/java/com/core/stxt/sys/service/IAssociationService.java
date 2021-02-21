@@ -2,6 +2,7 @@ package com.core.stxt.sys.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.core.stxt.sys.entity.po.Association;
+import com.core.stxt.sys.entity.vo.MemberInfo;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
@@ -51,4 +52,11 @@ public interface IAssociationService extends IService<Association> {
      * @return 返回查询到的社团列表
      */
     List<Association> list(Association association);
+
+    /**
+     * 根据id查询该社团全部成员
+     * @param associationId
+     * @return
+     */
+    List<MemberInfo> getMemberByAssociationId(Integer associationId);
 }
