@@ -39,6 +39,9 @@ public class Notice implements Serializable {
     @ApiModelProperty(value = "浏览次数")
     private Integer count;
 
+    @ApiModelProperty(value = "发布社团id,0为系统管理员发布")
+    private Integer associationId;
+
     @ApiModelProperty(value = "发布者id")
     private String userId;
 

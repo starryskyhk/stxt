@@ -8,6 +8,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -29,8 +30,8 @@ public class UserController {
     private IUserService userService;
     @ApiOperation(value = "添加用户")
     @PutMapping("")
-    public R addUser(User user){
-        userService.save(user);
+    public R addUser(User user,MultipartFile file){
+        userService.saveUser(user,file);
         return R.ok("添加成功");
     }
     @ApiOperation(value = "删除用户")
@@ -47,8 +48,8 @@ public class UserController {
     }
     @ApiOperation(value = "更改用户")
     @PostMapping("")
-    public R updateUser(User user){
-        userService.updateById(user);
+    public R updateUser(User user,MultipartFile file){
+        userService.updateUser(user,file);
         return R.ok("更改成功");
     }
     @ApiOperation(value = "条件查询所有用户")
@@ -56,5 +57,11 @@ public class UserController {
     public List<User> getUsers(User user){
         List<User> userList = userService.list(user);
         return userList;
+    }
+    @ApiOperation(value = "根据模板导入用户")
+    @PutMapping("/import")
+    public R importUser(MultipartFile file){
+        userService.saveBath(file);
+        return R.ok("批量导入成功");
     }
 }

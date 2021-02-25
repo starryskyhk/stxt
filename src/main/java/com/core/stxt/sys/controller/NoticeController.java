@@ -51,10 +51,10 @@ public class NoticeController {
         noticeService.updateById(notice);
         return R.ok("更改成功");
     }
-    @ApiOperation(value = "查询公告")
+    @ApiOperation(value = "条件查询公告")
     @GetMapping("")
-    public List<Notice> getNoticeList(){
-        List<Notice> noticeList = noticeService.list();
+    public List<Notice> getNoticeList(Notice notice){
+        List<Notice> noticeList = noticeService.list(notice);
         return noticeList;
     }
 }

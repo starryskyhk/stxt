@@ -2,6 +2,7 @@ package com.core.stxt.sys.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.core.stxt.sys.entity.po.Activity;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -27,4 +28,27 @@ public interface IActivityService extends IService<Activity> {
      * @return
      */
     boolean removeAllById(Integer id);
+
+    /**
+     * 更改活动信息
+     * @param activity 活动信息
+     * @param file 文件
+     * @return
+     */
+    boolean updateActivityInfo(Activity activity, MultipartFile file);
+
+    /**
+     * 创办活动
+     * @param activity 活动信息
+     * @param file 文件
+     * @return
+     */
+    boolean saveActivity(Activity activity, MultipartFile file);
+
+    /**
+     * 批量删除活动
+     * @param asList
+     * @return
+     */
+    boolean removeAllByIs(List<String> asList);
 }
