@@ -9,6 +9,8 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -37,6 +39,12 @@ public class UserController {
         userService.deleteAllById(id);
         return R.ok("删除成功");
     }
+    @ApiOperation(value = "批量删除用户")
+    @DeleteMapping("")
+    public R deleteUsers( String ids){
+        userService.deleteAllByIds(Arrays.asList(ids.split(",")));
+        return R.ok("删除成功");
+    }
     @ApiOperation(value = "更改用户")
     @PostMapping("")
     public R updateUser(User user){
@@ -49,5 +57,4 @@ public class UserController {
         List<User> userList = userService.list(user);
         return userList;
     }
-
 }

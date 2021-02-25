@@ -27,4 +27,11 @@ public interface IUserService extends IService<User> {
      * @return
      */
     List<User> list(User user);
+
+    /**
+     * 批量删除用户
+     * @param ids
+     * @return
+     */
+    boolean deleteAllByIds(List<String> ids);
 }
