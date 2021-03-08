@@ -2,6 +2,9 @@ package com.core.stxt.sys.entity.po;
 
 import java.time.LocalDateTime;
 import java.io.Serializable;
+
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -24,8 +27,11 @@ public class Space implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    @TableId(value = "id", type = IdType.AUTO)
+    @ApiModelProperty(value = "场地id")
     private Integer id;
 
+    @ApiModelProperty(value = "场地名称")
     private String name;
 
     @ApiModelProperty(value = "创建时间")

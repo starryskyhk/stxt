@@ -76,6 +76,7 @@ public class AssociationController {
         List<MemberInfo> memberList = associationService.getMemberByAssociationId(associationId);
         return memberList;
     }
+
     @ApiOperation(value = "社团审核")
     @PostMapping("/audit")
     public R auditAssociation(Association association){
