@@ -8,19 +8,40 @@
     <%@include file="/WEB-INF/jsp/common.jsp"%>
 </head>
 <body>
-表格
-类型<input type="text" id="search_type">
-状态
-<select id="search_status">
-    <option value="">请选择</option>
-    <option value="0">待审核</option>
-    <option value="1">正常</option>
-    <option value="2">已注销</option>
-</select>
-<div class="col-md-3 control-label" style="padding-top: 0; ">
-    <button class="btn  btn-success" type="button" id="search" value="搜索">搜索</button>
-    <button class="btn  btn-success" type="reset" id="" value="重置">重置</button>
+
+
+<div class="m-t-10 col-md-12" >
+    <div class="well">
+        <div class="row">
+            <form class="form-horizontal" action="" id="" method="post">
+                <div class="form-group">
+                    <label class="col-md-1 control-label">社团类别：</label>
+                    <div class="col-md-3">
+                            <input class="form-control" type="text" id="search_type" name="courseName" placeholder="请输入社团类别">
+                    </div>
+                    <label class="col-md-1 control-label">审核状态：</label>
+                    <div class="col-md-3">
+                        <select class="form-control" id="search_status" name="type">
+                            <option value="">请选择</option>
+                            <option value="0">待审核</option>
+                            <option value="1">正常</option>
+                            <option value="2">已注销</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3 control-label">
+                        <button class="btn btn-success" type="button" id="search" value="搜索">搜索</button>
+                        <button class="btn  btn-success" type="reset" value="重置">重置</button>
+                        <button class="btn  btn-success" type="reset" value="返回" onclick="window.history.go(-1)">返回</button>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+
+
+    </div>
 </div>
+
 <div class="container-fluid p-t-15">
     <div class="row">
         <div class="col-lg-12">
@@ -178,25 +199,26 @@
 
     //添加
     function addAssociation(id) {
-        var url = '/test/add';
+        var url = '/back/assList';
         popup.open_add("新增社团", url);
     }
 
     // 操作方法 - 删除 ,单条删除
     function delAssociation(id) {
         var url = '/sys/association/';
-        layer.confirm("你确定删除吗?", {icon: 3, offset: '100px'}, function () {
+        layer.confirm("你确定注销该社团吗?", {icon: 3, offset: '100px'}, function () {
             $.ajax({
                 url: url + id,
                 type: 'delete',
                 success: function (response) {
                     if (response.code == 0) {
                         layer.msg(response.msg, {icon: 1, time: 1000});
-                        //前台删除
-                        $('#tb_departments').bootstrapTable('remove', {
-                            field: "id",   //此处的 “id”对应的是字段名
-                            values: [parseInt(id)]
-                        });
+                        // //前台删除
+                        // $('#tb_departments').bootstrapTable('remove', {
+                        //     field: "id",   //此处的 “id”对应的是字段名
+                        //     values: [parseInt(id)]
+                        // });
+                        $('#tb_departments').bootstrapTable('refresh')
 
                     } else {
                         layer.alert(response.msg, {icon: 5});
@@ -224,10 +246,7 @@
                         if (response.code == 0) {
                             layer.msg(response.msg, {icon: 1, time: 1000});
                             //前台删除
-                            $('#tb_departments').bootstrapTable('remove', {
-                                field: "id",   //此处的 “id”对应的是字段名
-                                values: [parseInt(rows[0].id)]
-                            });
+                            $('#tb_departments').bootstrapTable('refresh')
 
                         } else {
                             layer.alert(response.msg, {icon: 5,anim: 6});
@@ -249,13 +268,6 @@
                     success: function (response) {
                         if (response.code == 0) {
                             layer.msg(response.msg, {icon: 1, time: 1000});
-                            //前台删除
-                            for (var i = 0; i < ids.length; i++) {
-                                $('#tb_departments').bootstrapTable('remove', {
-                                    field: "id",   //此处的 “id”对应的是字段名
-                                    values: [parseInt(ids[i])]
-                                });
-                            }
                             $('#tb_departments').bootstrapTable('refresh')
 
                         } else {

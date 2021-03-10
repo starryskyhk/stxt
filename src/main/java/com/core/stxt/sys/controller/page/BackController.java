@@ -25,9 +25,23 @@ import java.util.List;
 public class BackController {
     @Autowired
     private IAssociationService  associationService;
-
-    //---------------社团管理
-
+    //--------系统管理员
+    @GetMapping("index")
+    public String index(){
+        return "system/index";
+    }
+    @GetMapping("home")
+    public String home(){
+        return "system/home";
+    }
+    @GetMapping("addAss")
+    public String addAss(){
+        return "system/addAss";
+    }
+    @GetMapping("assList")
+    public String assAss(){
+        return "system/assList";
+    }
     //跳转到修改社团信息的页面，并回带数据
     @GetMapping("/editAssociation/{id}")
     public String edit(@PathVariable("id") Integer id, Model model){
@@ -35,8 +49,7 @@ public class BackController {
         Association association = associationService.getById(id);
         //将社团对象信息添加到model中
         model.addAttribute("association",association);
-        //TODO:跳转到修改社团信息的页面，需更改访问路径
-        return "test/edit";
+        return "system/editAss";
     }
     //跳转到社团成员页面
     @GetMapping("/members")
