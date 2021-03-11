@@ -15,18 +15,17 @@
         <div class="row">
             <form class="form-horizontal" action="" id="" method="post">
                 <div class="form-group">
-                    <label class="col-md-1 control-label">社团类别：</label>
+                    <label class="col-md-1 control-label">姓名：</label>
                     <div class="col-md-3">
-                            <input class="form-control" type="text" id="search_type" name="courseName" placeholder="请输入社团类别">
+                            <input class="form-control" type="text" id="name" name="name" placeholder="请输入姓名">
                     </div>
-                    <label class="col-md-1 control-label">审核状态：</label>
+                    <label class="col-md-1 control-label">学号：</label>
                     <div class="col-md-3">
-                        <select class="form-control" id="search_status" name="type">
-                            <option value="">请选择</option>
-                            <option value="0">待审核</option>
-                            <option value="1">正常</option>
-                            <option value="2">已注销</option>
-                        </select>
+                        <input class="form-control" type="text" id="id" name="id" placeholder="请输入学号">
+                    </div>
+                    <label class="col-md-1 control-label">手机号码：</label>
+                    <div class="col-md-3">
+                        <input class="form-control" type="text" id="phone" name="phone" placeholder="请输入手机号码">
                     </div>
                     <div class="col-md-3 control-label">
                         <button class="btn btn-success" type="button" id="search" value="搜索">搜索</button>
@@ -48,17 +47,17 @@
             <div class="card">
 
                 <div class="card-header">
-                    <h4>管理员列表</h4>
+                    <h4>用户列表</h4>
                 </div>
                 <div class="card-body">
 
                     <div id="toolbar" class="toolbar-btn-action">
                         <button id="btn_add" type="button" class="btn btn-primary m-r-5 btn-sm"
-                                onclick="addAssociation()">
+                                onclick="addUser()">
                             <span class="mdi mdi-plus " aria-hidden="true"></span>新增
                         </button>
                         <button id="btn_delete" type="button" class="btn btn-danger m-r-5 btn-sm"
-                                onclick="delCheckAssociation()">
+                                onclick="delUsers()">
                             <span class="mdi mdi-window-close" aria-hidden="true"></span>删除
                         </button>
 
@@ -76,7 +75,7 @@
 
 
 <script>
-    var list_url = '/sys/association';
+    var list_url = '/sys/user';
     $(function () {
     initTable();
         $("#search").bind("click", initTable);
@@ -102,8 +101,10 @@
             queryParamsType: '',
             queryParams: function (param) {
                 return {
-                    typeId:$("#search_type").val(),
-                    status:$("#search_status").val()
+                    name:$("#name").val(),
+                    id:$("#id").val(),
+                    phone:$("#phone").val(),
+                    roleId:1
                 }
             },
             columns: [
@@ -112,36 +113,38 @@
                     checkbox: true,
                     align: "center"
                 }, {
+                    field: 'id',
+                    title: '学号',
+                    align: "center"
+                }, {
                     field: 'name',
-                    title: '社团名称',
-                    align: "center"
-                }, {
-                    field: 'num',
-                    title: '社团人数',
+                    title: '姓名',
                     align: "center"
                 },{
-                    field: 'qq',
-                    title: '官方QQ',
-                    align: "center"
+                    field: 'sex',
+                    title: '性别',
+                    align: "center",
+                    formatter:sexType
                 }, {
-                    field: 'email',
-                    title: '官方邮箱',
-                    align: "center"
-                }, {
-                    field: 'typeId',
-                    title: '社团类型',
-                    formatter:type,
-                    align: "center"
-                },{
-                    field: 'status',
-                    title: '社团状态',
-                    formatter:status,
-                    align: "center"
-                },{
                     field: 'email',
                     title: '邮箱',
                     align: "center"
+                }, {
+                    field: 'phone',
+                    title: '手机号码',
+                    align: "center"
                 },{
+                    field: 'className',
+                    title: '班级',
+                    align: "center"
+                }, {
+                    field: '',
+                    title: '角色',
+                    align: "center",
+                    formatter:function (value) {
+                        return "学生";
+                    }
+                }, {
                     field: 'createTime',
                     title: '创建时间',
                     align: "center"
@@ -152,13 +155,13 @@
                     align: 'center',
                     events: {
                         'click .edit-btn': function (event, value, row, index) {
-                            editAssociation(row.id);
+                            editUser(row.id);
                         },
                         'click .del-btn': function (event, value, row, index) {
-                            delAssociation(row.id);
+                            delUser(row.id);
                         },
                         'click .member-btn': function (event, value, row, index) {
-                            searchMember(row.id);
+                            reset(row.id);//TODO:用户管理进行到了这一步
                         }
                     }
                 },
@@ -189,19 +192,13 @@
         }
         return value;
     }
-    //社团类型显示
-    function type(value,row,index) {
-        $.ajax({
-
-            url:  "/sys/type/getName/"+row.typeId,
-            type:"get",
-
-            success: function (data) {
-                value=data["typeName"];
-            }
-
-        })
-        return value;
+    //性别显示
+    function sexType(value,row,index) {
+        if(value == '0'){
+            return "男";
+        }else{
+            return "女";
+        }
 
     }
 

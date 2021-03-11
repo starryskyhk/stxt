@@ -52,6 +52,7 @@ popup.open_add = function (title, url, width, height,) {
             var body = layer.getChildFrame('body', index); //得到iframe页面层的BODY
             var iframeBtn = body.find('#save');//得到iframe页面层的提交按钮
             iframeBtn.click();//模拟iframe页面层的提交按钮点击
+
         },
     });
 

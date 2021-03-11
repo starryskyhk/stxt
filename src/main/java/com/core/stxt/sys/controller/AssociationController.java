@@ -69,6 +69,12 @@ public class AssociationController {
         List<Association> associationList = associationService.list(association);
         return associationList;
     }
+    @ApiOperation(value = "根据社团id获取社团信息")
+    @GetMapping("/getAss/{id}")
+    public Association getAssociationById(@PathVariable("id") Integer id){
+        Association associationList = associationService.getById(id);
+        return associationList;
+    }
 
     @ApiOperation(value = "查看某社团中的成员")
     @GetMapping("/{associationId}")

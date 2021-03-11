@@ -57,5 +57,11 @@ public class SpaceController {
         List<Space> spaceList = spaceService.list();
         return spaceList;
     }
+    @ApiOperation(value = "查询场地列表")
+    @GetMapping("/getAddress/{id}")
+    public Space getSpaceById(@PathVariable("id") Integer id){
+        Space space = spaceService.getById(id);
+        return space;
+    }
 
 }

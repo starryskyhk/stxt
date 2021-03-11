@@ -10,37 +10,6 @@
 <body>
 
 
-<div class="m-t-10 col-md-12" >
-    <div class="well">
-        <div class="row">
-            <form class="form-horizontal" action="" id="" method="post">
-                <div class="form-group">
-                    <label class="col-md-1 control-label">社团类别：</label>
-                    <div class="col-md-3">
-                            <input class="form-control" type="text" id="search_type" name="courseName" placeholder="请输入社团类别">
-                    </div>
-                    <label class="col-md-1 control-label">审核状态：</label>
-                    <div class="col-md-3">
-                        <select class="form-control" id="search_status" name="type">
-                            <option value="">请选择</option>
-                            <option value="0">待审核</option>
-                            <option value="1">正常</option>
-                            <option value="2">已注销</option>
-                        </select>
-                    </div>
-                    <div class="col-md-3 control-label">
-                        <button class="btn btn-success" type="button" id="search" value="搜索">搜索</button>
-                        <button class="btn  btn-success" type="reset" value="重置">重置</button>
-                        <button class="btn  btn-success" type="reset" value="返回" onclick="window.history.go(-1)">返回</button>
-                    </div>
-                </div>
-            </form>
-
-        </div>
-
-
-    </div>
-</div>
 
 <div class="container-fluid p-t-15">
     <div class="row">
@@ -48,22 +17,9 @@
             <div class="card">
 
                 <div class="card-header">
-                    <h4>管理员列表</h4>
+                    <h4>待审核社团列表</h4>
                 </div>
                 <div class="card-body">
-
-                    <div id="toolbar" class="toolbar-btn-action">
-                        <button id="btn_add" type="button" class="btn btn-primary m-r-5 btn-sm"
-                                onclick="addAssociation()">
-                            <span class="mdi mdi-plus " aria-hidden="true"></span>新增
-                        </button>
-                        <button id="btn_delete" type="button" class="btn btn-danger m-r-5 btn-sm"
-                                onclick="delCheckAssociation()">
-                            <span class="mdi mdi-window-close" aria-hidden="true"></span>删除
-                        </button>
-
-
-                    </div>
 
                     <table id="tb_departments"></table>
 
@@ -102,49 +58,42 @@
             queryParamsType: '',
             queryParams: function (param) {
                 return {
-                    typeId:$("#search_type").val(),
-                    status:$("#search_status").val()
+                    status:0
                 }
             },
             columns: [
                 {
                     field: 'check',
-                    checkbox: true,
-                    align: "center"
+                    checkbox: true
                 }, {
                     field: 'name',
-                    title: '社团名称',
-                    align: "center"
+                    title: '社团名称'
                 }, {
                     field: 'num',
-                    title: '社团人数',
-                    align: "center"
+                    title: '社团人数'
                 },{
                     field: 'qq',
-                    title: '官方QQ',
-                    align: "center"
+                    title: '官方QQ'
                 }, {
                     field: 'email',
                     title: '官方邮箱',
-                    align: "center"
                 }, {
                     field: 'typeId',
                     title: '社团类型',
-                    formatter:type,
-                    align: "center"
+                    formatter:type
                 },{
                     field: 'status',
                     title: '社团状态',
-                    formatter:status,
-                    align: "center"
+                    formatter:status
                 },{
                     field: 'email',
-                    title: '邮箱',
-                    align: "center"
+                    title: '邮箱'
                 },{
                     field: 'createTime',
-                    title: '创建时间',
-                    align: "center"
+                    title: '申请时间'
+                },{
+                    field: 'studentId',
+                    title: '申请人学号'
                 },{
                     field: 'operate',
                     title: '操作',
@@ -153,12 +102,6 @@
                     events: {
                         'click .edit-btn': function (event, value, row, index) {
                             editAssociation(row.id);
-                        },
-                        'click .del-btn': function (event, value, row, index) {
-                            delAssociation(row.id);
-                        },
-                        'click .member-btn': function (event, value, row, index) {
-                            searchMember(row.id);
                         }
                     }
                 },
@@ -171,10 +114,8 @@
     // 操作按钮
     function btnGroup() {
         var html =
-            '<a href="#!" class="btn btn-xs btn-success m-r-5 edit-btn" title="编辑" data-toggle="tooltip"><i class="mdi mdi-pencil"></i></a>' +
-            '<a href="#!" class="btn btn-xs btn-danger m-r-5 del-btn" title="删除" data-toggle="tooltip"><i class="mdi mdi-delete"></i></a>' +
-            '<a href="#!" class="btn btn-xs btn-info member-btn" title="查看社团成员" data-toggle="tooltip"><i class="mdi mdi-account-search"></i></a>';
-        return html;
+            '<a href="#!" class="btn btn-xs btn-success m-r-5 edit-btn" title="编辑" data-toggle="tooltip"><i class="mdi mdi-pencil"></i></a>'
+         return html;
     }
     //社团状态显示
     function status(value,row,index) {
@@ -182,8 +123,6 @@
             value="待审核";
         }else if(row.status=='1'){
             value="正常";
-        }else if(row.status=='3'){
-            value="已驳回";
         }else{
             value="已注销";
         }
@@ -195,7 +134,7 @@
 
             url:  "/sys/type/getName/"+row.typeId,
             type:"get",
-
+            async:false,
             success: function (data) {
                 value=data["typeName"];
             }
@@ -207,20 +146,10 @@
 
     // 操作方法 - 编辑
     function editAssociation(id) {
-        var url = '/back/editAssociation/' + id;
-        popup.open_add('编辑用户', url)
+        var url = '/back/checkAssInfo/' + id;
+        window.location.href=url ;
     }
 
-    //添加
-    function addAssociation(id) {
-        var url = '/back/assList';
-        popup.open_add("新增社团", url);
-    }
-    //查询社团成员
-    function searchMember(id) {
-        var url = '/back/members/';
-        window.location.href=url+id;
-    }
 
     // 操作方法 - 删除 ,单条删除
     function delAssociation(id) {
@@ -232,11 +161,6 @@
                 success: function (response) {
                     if (response.code == 0) {
                         layer.msg(response.msg, {icon: 1, time: 1000});
-                        // //前台删除
-                        // $('#tb_departments').bootstrapTable('remove', {
-                        //     field: "id",   //此处的 “id”对应的是字段名
-                        //     values: [parseInt(id)]
-                        // });
                         $('#tb_departments').bootstrapTable('refresh')
 
                     } else {

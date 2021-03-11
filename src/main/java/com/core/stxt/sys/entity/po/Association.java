@@ -54,7 +54,7 @@ public class Association implements Serializable {
     @ApiModelProperty(value = "官方邮箱")
     private String email;
 
-    @ApiModelProperty(value = "社团状态（0——审批中，1——正常,2----已注销）")
+    @ApiModelProperty(value = "社团状态（0——审批中，1——正常,2----已注销,3----已驳回）")
     private Integer status;
 
     @ApiModelProperty(value = "社团类型id")

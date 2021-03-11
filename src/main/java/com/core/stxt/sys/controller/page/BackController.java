@@ -1,7 +1,9 @@
 package com.core.stxt.sys.controller.page;
 
 import com.core.stxt.common.utils.FileHandlerUtils;
+import com.core.stxt.sys.entity.po.Activity;
 import com.core.stxt.sys.entity.po.Association;
+import com.core.stxt.sys.service.IActivityService;
 import com.core.stxt.sys.service.IAssociationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,6 +27,8 @@ import java.util.List;
 public class BackController {
     @Autowired
     private IAssociationService  associationService;
+    @Autowired
+    private IActivityService activityService;
     //--------系统管理员
     @GetMapping("index")
     public String index(){
@@ -52,12 +56,42 @@ public class BackController {
         return "system/editAss";
     }
     //跳转到社团成员页面
-    @GetMapping("/members")
-    public String toMembers(Integer id,Model model){
+    @GetMapping("/members/{id}")
+    public String toMembers(@PathVariable("id") Integer id,Model model){
         Association association = associationService.getById(id);
         model.addAttribute("association",association);
-        //TODO:跳转到社团成员页面链接待修改
-        return null;
+        return "system/memberList";
+    }
+    @GetMapping("/addMember/{id}")
+    public String addMember(@PathVariable("id") Integer id,Model model){
+        model.addAttribute("id",id);
+        return "system/addMember";
+    }
+    //-------------审核管理
+    @GetMapping("assCheck")
+    public String assCeck(){
+        return "system/assCheckList";
+    }
+
+    @GetMapping("/checkAssInfo/{id}")
+    public String checkAssInfo(@PathVariable("id") Integer id, Model model){
+        //通过id获取到社团对象
+        Association association = associationService.getById(id);
+        //将社团对象信息添加到model中
+        model.addAttribute("association",association);
+        return "system/checkAssInfo";
+    }
+    @GetMapping("activityCheck")
+    public String activityCheck(){
+        return "system/activityCheck";
+    }
+    @GetMapping("/checkActivityInfo/{id}")
+    public String checkActivityInfo(@PathVariable("id") Integer id, Model model){
+        //通过id获取到社团对象
+        Activity activity = activityService.getById(id);
+        //将社团对象信息添加到model中
+        model.addAttribute("activity",activity);
+        return "system/checkActivityInfo";
     }
 
 }
