@@ -116,6 +116,20 @@ public class BackController {
     public String addUser(){
         return "system/addUser";
     }
+    @GetMapping("adminList")
+    public String adminList(){
+        return "system/adminList";
+    }
+    @GetMapping("addAdmin")
+    public String addAdmin(){
+        return "system/addAdmin";
+    }
+    //----------公告管理
+    @GetMapping("noticeList")
+    public String noticeList(){
+        return "system/noticeList";
+    }
+
 
 
 

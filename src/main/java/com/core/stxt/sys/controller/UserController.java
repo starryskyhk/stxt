@@ -49,6 +49,7 @@ public class UserController {
     @ApiOperation(value = "更改用户")
     @PostMapping("")
     public R updateUser(User user,MultipartFile file){
+        System.out.println(user);
         userService.updateUser(user,file);
         return R.ok("更改成功");
     }
@@ -56,6 +57,12 @@ public class UserController {
     @GetMapping("")
     public List<User> getUsers(User user){
         List<User> userList = userService.list(user);
+        return userList;
+    }
+    @ApiOperation(value = "条件查询所有管理员")
+    @GetMapping("/admins")
+    public List<User> getAdmins(User user){
+        List<User> userList = userService.adminlist(user);
         return userList;
     }
     @ApiOperation(value = "根据模板导入用户")

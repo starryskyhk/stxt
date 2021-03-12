@@ -57,10 +57,15 @@ public class FileHandlerUtils {
     //删除文件
     public static boolean deleteFile(String fileName){
         try {
-            String path = ROOTPATH+fileName;
-            System.out.println("path:"+path);
-            FileUtil.del(new File(path));
-            return true;
+            if(fileName==null||StringUtils.isEmpty(fileName)){
+                return true;
+            }else{
+                String path = ROOTPATH+fileName;
+                System.out.println("path:"+path);
+                FileUtil.del(new File(path));
+                return true;
+            }
+
         } catch (IORuntimeException e) {
             e.printStackTrace();
             return false;

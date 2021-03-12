@@ -20,7 +20,7 @@
                     <div class="col-md-3">
                             <input class="form-control" type="text" id="name" name="name" placeholder="请输入姓名">
                     </div>
-                    <label class="col-md-1 control-label">学号：</label>
+                    <label class="col-md-1 control-label">工号/学号：</label>
                     <div class="col-md-3">
                         <input class="form-control" type="text" id="id" name="id" placeholder="请输入学号">
                     </div>
@@ -61,17 +61,6 @@
                                 onclick="delUsers()">
                             <span class="mdi mdi-window-close" aria-hidden="true"></span>删除
                         </button>
-                        <button id="excel" type="button" class="btn btn-info m-r-5 btn-sm">
-                             <span class="mdi mdi-download-network" aria-hidden="true"></span>批量导入
-                        </button>
-                        <a  href="/file/ftl/用户信息导入模板.xlsx" id="template" type="button" class="btn btn-info m-r-5 btn-sm">
-                            <span class="mdi mdi-download-network" aria-hidden="true"></span>导入模板下载
-                        </a>
-                        <form method="put" enctype="multipart/form-data"  onsubmit="return false;" id="data_form">
-                            <input type="file" accept=".xlsx,.xls" style="display: none" name="file" id="file" onchange="importUser()" />
-                            <button class="btn btn-primary" type="submit" style="display: none;" id="save">保存
-                            </button>
-                        </form>
 
 
 
@@ -88,7 +77,7 @@
 
 
 <script>
-    var list_url = '/sys/user';
+    var list_url = '/sys/user/admins';
     $(function () {
     initTable();
         $("#search").bind("click", initTable);
@@ -116,8 +105,7 @@
                 return {
                     name:$("#name").val(),
                     id:$("#id").val(),
-                    phone:$("#phone").val(),
-                    roleId:1
+                    phone:$("#phone").val()
                 }
             },
             columns: [
@@ -127,7 +115,7 @@
                     align: "center"
                 }, {
                     field: 'id',
-                    title: '学号',
+                    title: '学号/工号',
                     align: "center"
                 }, {
                     field: 'name',
@@ -151,11 +139,15 @@
                     title: '班级',
                     align: "center"
                 }, {
-                    field: '',
+                    field: 'roleId',
                     title: '角色',
                     align: "center",
                     formatter:function (value) {
-                        return "学生";
+                        if(value==2){
+                            return "社团管理员";
+                        }else if(value==3){
+                            return "系统管理员";
+                        }
                     }
                 }, {
                     field: 'createTime',
@@ -210,8 +202,8 @@
 
     //添加
     function addUser() {
-        var url = '/back/addUser';
-        popup.open_add("添加用户", url);
+        var url = '/back/addAdmin';
+        popup.open_add("添加管理员", url);
     }
     //查询社团成员
     function reset(id) {

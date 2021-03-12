@@ -104,12 +104,24 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
             //1：上传封面图片文件，拿到图片路径
             String imgUrl = FileHandlerUtils.upload(file);
             //2：将用户信息添加进用户表中
-            user.setImgUrl(imgUrl).setPassword(user.getPassword());
+            user.setImgUrl(imgUrl).setPassword(user.getId());
             this.save(user);
         } catch (Exception e) {
             e.printStackTrace();
             return false;
         }
         return true;
+    }
+
+    @Override
+    public List<User> adminlist(User user) {
+        QueryWrapper<User> wrapper = new QueryWrapper<User>();
+        wrapper.like(user.getName()!=null,"name",user.getName())
+                .like(user.getId()!=null,"id",user.getId())
+                .ne("role_id",1)
+                .eq(user.getRoleId()!=null,"role_id",user.getRoleId())
+                .like(user.getPhone()!=null,"phone",user.getPhone());
+        List<User> adminList = this.list(wrapper);
+        return adminList;
     }
 }

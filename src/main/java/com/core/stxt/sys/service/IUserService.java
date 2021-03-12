@@ -58,4 +58,11 @@ public interface IUserService extends IService<User> {
      * @return
      */
     boolean saveUser(User user, MultipartFile file);
+
+    /**
+     * 条件查询所有的管理员
+     * @param user
+     * @return
+     */
+    List<User> adminlist(User user);
 }

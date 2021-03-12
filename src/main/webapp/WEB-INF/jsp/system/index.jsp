@@ -87,7 +87,19 @@
                         <span class="nav-label">用戶管理</span>
                     </a>
                     <ul class="nav nav-second-level">
-                        <li><a class="J_menuItem" href="/back/userList">用戶列表</a>
+                        <li><a class="J_menuItem" href="/back/userList">学生列表</a>
+                        </li>
+                        <li><a class="J_menuItem" href="/back/adminList">管理员列表</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="J_menuItem">
+                        <i class="fa fa-building"></i>
+                        <span class="nav-label">公告管理</span>
+                    </a>
+                    <ul class="nav nav-second-level">
+                        <li><a class="J_menuItem" href="/back/noticeList">公告列表</a>
                         </li>
                     </ul>
                 </li>
