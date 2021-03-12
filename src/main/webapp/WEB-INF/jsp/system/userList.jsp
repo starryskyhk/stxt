@@ -1,3 +1,4 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page language="java" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -60,6 +61,18 @@
                                 onclick="delUsers()">
                             <span class="mdi mdi-window-close" aria-hidden="true"></span>删除
                         </button>
+                        <button id="excel" type="button" class="btn btn-info m-r-5 btn-sm">
+                             <span class="mdi mdi-download-network" aria-hidden="true"></span>批量导入
+                        </button>
+                        <a  href="/file/ftl/用户信息导入模板.xlsx" id="template" type="button" class="btn btn-info m-r-5 btn-sm">
+                            <span class="mdi mdi-download-network" aria-hidden="true"></span>导入模板下载
+                        </a>
+                        <form method="put" enctype="multipart/form-data"  onsubmit="return false;" id="data_form">
+                            <input type="file" accept=".xlsx,.xls" style="display: none" name="file" id="file" onchange="importUser()" />
+                            <button class="btn btn-primary" type="submit" style="display: none;" id="save">保存
+                            </button>
+                        </form>
+
 
 
                     </div>
@@ -196,9 +209,9 @@
     }
 
     //添加
-    function addAssociation(id) {
-        var url = '/back/assList';
-        popup.open_add("新增社团", url);
+    function addUser() {
+        var url = '/back/addUser';
+        popup.open_add("添加用户", url);
     }
     //查询社团成员
     function searchMember(id) {
@@ -207,20 +220,20 @@
     }
 
     // 操作方法 - 删除 ,单条删除
-    function delAssociation(id) {
-        var url = '/sys/association/';
-        layer.confirm("你确定注销该社团吗?", {icon: 3, offset: '100px'}, function () {
+    function delUser(id) {
+        var url = '/sys/user/';
+        layer.confirm("你确定删除该用户吗?", {icon: 3, offset: '100px'}, function () {
             $.ajax({
                 url: url + id,
                 type: 'delete',
                 success: function (response) {
                     if (response.code == 0) {
                         layer.msg(response.msg, {icon: 1, time: 1000});
-                        // //前台删除
-                        // $('#tb_departments').bootstrapTable('remove', {
-                        //     field: "id",   //此处的 “id”对应的是字段名
-                        //     values: [parseInt(id)]
-                        // });
+                        //前台删除
+                        $('#tb_departments').bootstrapTable('remove', {
+                            field: "id",   //此处的 “id”对应的是字段名
+                            values: [parseInt(id)]
+                        });
                         $('#tb_departments').bootstrapTable('refresh')
 
                     } else {
@@ -234,14 +247,14 @@
     }
 
     //批量删除
-    function delCheckAssociation() {
+    function delUsers() {
         var rows = $('#tb_departments').bootstrapTable('getSelections');
         if (rows.length == 0) {
             layer.msg("请选择数据行!", {icon: 2, time: 1000,anim: 6})
         } else if (rows.length == 1) {
             layer.confirm("确认删除?", {icon: 3}, function () {
                 //异步删除一条
-                var url = '/sys/association/';
+                var url = '/sys/user/';
                 $.ajax({
                     url: url + rows[0].id,
                     type: 'delete',
@@ -263,7 +276,7 @@
                 for (var i = 0; i < rows.length; i++) {
                     ids.push(rows[i].id);
                 }
-                var url = '/sys/association/';
+                var url = '/sys/user/';
                 $.ajax({
                     url: url,
                     type: 'delete',
@@ -284,6 +297,32 @@
         }
 
     };
+    //点击图片更改图片文件
+    $("#excel").click(function () {
+        $("#file").click();
+    })
+    $('#data_form').submit(function () {
+        $.ajax({
+            url: '/sys/user/import',
+            type: 'put',
+            data: new FormData($("#data_form")[0]),
+            dataType: 'json',
+            cache:false,
+            processData: false, //需设置为false。因为data值是FormData对象，不需要对数据做处理
+            contentType: false, //需设置为false。因为是FormData对象，且已经声明了属性enctype="multipart/form-data"
+            success: function (response) {
+                if (response.code == 0) {
+                    layer.msg(response.msg, {icon: 1, time: 1000}, );
+                } else {
+                    layer.alert(response.msg, {icon: 5, anim: 6});
+                }
+                $('#tb_departments').bootstrapTable('refresh')
+            }
+        })
+    });
+    function importUser(){
+        $("#save").click();
+    }
 
 </script>
 </html>

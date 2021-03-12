@@ -51,5 +51,11 @@ public interface IUserService extends IService<User> {
      */
     boolean updateUser(User user, MultipartFile file);
 
+    /**
+     * 添加用户
+     * @param user 用户信息
+     * @param file 用户头像
+     * @return
+     */
     boolean saveUser(User user, MultipartFile file);
 }

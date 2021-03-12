@@ -4,6 +4,7 @@ package com.core.stxt.common.utils;
 import cn.hutool.core.io.FileUtil;
 import cn.hutool.core.io.IORuntimeException;
 import org.apache.commons.io.FileUtils;
+import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
@@ -23,6 +24,12 @@ public class FileHandlerUtils {
 
     //上传单个文件到file中去,并返回文件路径
     public static String upload(MultipartFile file) {
+        boolean empty = file.getSize()==0;
+        System.out.println(file.getName());
+        System.out.println(file.getOriginalFilename());
+        if(file==null||file.getSize()==0||StringUtils.isEmpty(file.getOriginalFilename())){
+            return null;
+        }
         //获取文件名称
         String filename = file.getOriginalFilename();
         InputStream inputStream = null;

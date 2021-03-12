@@ -112,6 +112,10 @@ public class BackController {
         model.addAttribute("user",user);
         return "system/editUser";
     }
+    @GetMapping("addUser")
+    public String addUser(){
+        return "system/addUser";
+    }
 
 
 
