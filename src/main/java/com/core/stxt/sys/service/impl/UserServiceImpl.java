@@ -20,6 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.logging.FileHandler;
 
 /**
  * <p>
@@ -37,6 +38,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
     @Override
     @Transactional
     public boolean deleteAllById(String id) {
+        //先删除文件
+        FileHandlerUtils.deleteFile(this.getById(id).getImgUrl());
         //删除用户表
         this.removeById(id);
         //删除社团成员表中信息
