@@ -179,19 +179,6 @@
             '<a href="#!" class="btn btn-xs btn-info member-btn" title="查看社团成员" data-toggle="tooltip"><i class="mdi mdi-account-search"></i></a>';
         return html;
     }
-    //社团状态显示
-    function status(value,row,index) {
-        if(row.status=='0'){
-            value="待审核";
-        }else if(row.status=='1'){
-            value="正常";
-        }else if(row.status=='3'){
-            value="已驳回";
-        }else{
-            value="已注销";
-        }
-        return value;
-    }
     //性别显示
     function sexType(value,row,index) {
         if(value == '0'){
@@ -203,8 +190,8 @@
     }
 
     // 操作方法 - 编辑
-    function editAssociation(id) {
-        var url = '/back/editAssociation/' + id;
+    function editUser(id) {
+        var url = '/back/user/' + id;
         popup.open_add('编辑用户', url)
     }
 

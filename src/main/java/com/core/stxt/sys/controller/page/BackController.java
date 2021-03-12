@@ -3,8 +3,11 @@ package com.core.stxt.sys.controller.page;
 import com.core.stxt.common.utils.FileHandlerUtils;
 import com.core.stxt.sys.entity.po.Activity;
 import com.core.stxt.sys.entity.po.Association;
+import com.core.stxt.sys.entity.po.User;
 import com.core.stxt.sys.service.IActivityService;
 import com.core.stxt.sys.service.IAssociationService;
+import com.core.stxt.sys.service.IUserService;
+import net.bytebuddy.asm.Advice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,6 +32,8 @@ public class BackController {
     private IAssociationService  associationService;
     @Autowired
     private IActivityService activityService;
+    @Autowired
+    private IUserService userService;
     //--------系统管理员
     @GetMapping("index")
     public String index(){
@@ -93,5 +98,21 @@ public class BackController {
         model.addAttribute("activity",activity);
         return "system/checkActivityInfo";
     }
+
+    //-------------用户管理
+    @GetMapping("userList")
+    public String userList(){
+        return "system/userList";
+    }
+
+    //跳转到社团成员页面
+    @GetMapping("/user/{id}")
+    public String toUser(@PathVariable("id") Integer id,Model model){
+        User user = userService.getById(id);
+        model.addAttribute("user",user);
+        return "system/editUser";
+    }
+
+
 
 }

@@ -49,7 +49,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         QueryWrapper<User> wrapper = new QueryWrapper<User>();
         wrapper.like(user.getName()!=null,"name",user.getName())
                 .like(user.getId()!=null,"id",user.getId())
-                .eq(user.getRoleId()!=null,"role_id",user.getRoleId());
+                .eq(user.getRoleId()!=null,"role_id",user.getRoleId())
+                .like(user.getPhone()!=null,"phone",user.getPhone());
         List<User> userList = this.list(wrapper);
         return userList;
     }

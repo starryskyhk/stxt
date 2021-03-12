@@ -87,7 +87,7 @@
                         <span class="nav-label">用戶管理</span>
                     </a>
                     <ul class="nav nav-second-level">
-                        <li><a class="J_menuItem" href="/back/assList">用戶列表</a>
+                        <li><a class="J_menuItem" href="/back/userList">用戶列表</a>
                         </li>
                     </ul>
                 </li>
