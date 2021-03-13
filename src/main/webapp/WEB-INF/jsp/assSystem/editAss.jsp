@@ -26,7 +26,7 @@
                         <div class="form-group">
                             <label class="col-sm-3 control-label">社团简介</label>
                             <div class="col-sm-8">
-                                <textarea  placeholder="请输入社团简介"  name="brief" id="brief">
+                                <textarea cols="60%" rows="15%"  placeholder="请输入社团简介"  name="brief" id="brief">
                                     ${association.brief}
                                 </textarea>
                             </div>
@@ -76,7 +76,7 @@
                         <div class="form-group">
 
                             <div class="col-md-9 col-md-offset-3">
-                                <button class="btn btn-primary" type="submit" style="display: none;" id="save">保存
+                                <button class="btn btn-primary" type="submit" id="save">保存
                                 </button>
                             </div>
                         </div>
@@ -137,9 +137,7 @@
             success: function (response) {
                 if (response.code == 0) {
                     layer.msg(response.msg, {icon: 1, time: 1000}, function () {
-                        var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
-                        parent.layer.close(index); //再执行关闭
-                        parent.$('#tb_departments').bootstrapTable('refresh')
+                        location.reload();
                     });
                 } else {
                     layer.alert(response.msg, {icon: 5, anim: 6});

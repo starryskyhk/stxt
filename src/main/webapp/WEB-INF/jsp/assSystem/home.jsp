@@ -67,7 +67,9 @@
                     <div class="col-sm-8">
                         <div class="ibox float-e-margins">
                             <div class="ibox-title" style="border-bottom:none;background:#fff;">
-                                <h5>服务器状态</h5>
+                                <h5>${sessionScope.user.id}</h5>
+                                <h5>${sessionScope.user.name}</h5>
+                                <h5>${sessionScope.associationId}</h5>
                             </div>
                             <div class="ibox-content" style="border-top:none;">
                                 <div id="flot-line-chart-moving" style="height:217px;">

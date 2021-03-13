@@ -148,7 +148,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
                 //社团管理员
                 Member member = memberService.getOne(new QueryWrapper<Member>().eq("user_id", verityUser.getId()).eq("rank", "社长"));
                 session.setAttribute("associationId",member.getAssociationId());
-                return R.ok("");
+                return R.ok("/assBack/index");
             }else if(verityUser.getRoleId()==3){
                 session.setAttribute("associationId",0);
                 return R.ok("/back/system/index");

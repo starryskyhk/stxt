@@ -54,7 +54,7 @@
                     <span class="ng-scope">数据统计</span>
                 </li>
                 <li>
-                    <a class="J_menuItem" href="/back/home">
+                    <a class="J_menuItem" href="/assBack/home">
                         <i class="fa fa-home"></i>
                         <span class="nav-label">主页</span>
                     </a>
@@ -65,31 +65,31 @@
                         <span class="nav-label">社团管理</span>
                     </a>
                     <ul class="nav nav-second-level">
-                        <li><a class="J_menuItem" href="/back/assList">社团列表</a>
+                        <li><a class="J_menuItem" href="/assBack/editAssociation/${sessionScope.associationId}">社团信息</a>
                         </li>
                     </ul>
                 </li>
                 <li>
                     <a class="J_menuItem">
                         <i class="fa fa-building"></i>
-                        <span class="nav-label">审核管理</span>
+                        <span class="nav-label">活动管理</span>
                     </a>
                     <ul class="nav nav-second-level">
-                        <li><a class="J_menuItem" href="/back/assCheck">创建社团审核</a>
+                        <li><a class="J_menuItem" href="/assBack/assCheck">活动列表</a>
                         </li>
-                        <li><a class="J_menuItem" href="/back/activityCheck">创建活动审核</a>
+                        <li><a class="J_menuItem" href="/assBack/activityCheck">活动场地管理</a>
                         </li>
                     </ul>
                 </li>
                 <li>
                     <a class="J_menuItem">
                         <i class="fa fa-building"></i>
-                        <span class="nav-label">用戶管理</span>
+                        <span class="nav-label">社员管理</span>
                     </a>
                     <ul class="nav nav-second-level">
-                        <li><a class="J_menuItem" href="/back/userList">学生列表</a>
+                        <li><a class="J_menuItem" href="/assBack/userList">成员列表</a>
                         </li>
-                        <li><a class="J_menuItem" href="/back/adminList">管理员列表</a>
+                        <li><a class="J_menuItem" href="/assBack/adminList">审核列表</a>
                         </li>
                     </ul>
                 </li>
@@ -99,7 +99,7 @@
                         <span class="nav-label">公告管理</span>
                     </a>
                     <ul class="nav nav-second-level">
-                        <li><a class="J_menuItem" href="/back/noticeList">公告列表</a>
+                        <li><a class="J_menuItem" href="/assBack/noticeList">公告列表</a>
                         </li>
                     </ul>
                 </li>
@@ -213,7 +213,7 @@
             </nav>
         </div>
         <div class="row J_mainContent" id="content-main">
-            <iframe id="J_iframe" width="100%" height="100%" src="/back/home" frameborder="0"
+            <iframe id="J_iframe" width="100%" height="100%" src="/assBack/home" frameborder="0"
                     seamless></iframe>
         </div>
     </div>

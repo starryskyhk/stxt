@@ -25,6 +25,7 @@
                                 onclick="addNotice()">
                             <span class="mdi mdi-plus " aria-hidden="true"></span>新增
                         </button>
+                        <input id="associationId" value="${sessionScope.associationId}" hidden name="associationId">
                         <button id="btn_delete" type="button" class="btn btn-danger m-r-5 btn-sm"
                                 onclick="delNotices()">
                             <span class="mdi mdi-window-close" aria-hidden="true"></span>删除
@@ -68,6 +69,11 @@
             pageList: [10, 20, 30],         // 可供选择的每页的行数
             search: true,
             queryParamsType: '',
+            queryParams: function (param) {
+                return {
+                    associationId:$("#associationId").val()
+                }
+            },
             columns: [
                 {
                     field: 'check',
@@ -112,7 +118,8 @@
                         }
                     }
                 },
-            ]
+            ],
+
         });
 
     }
@@ -148,13 +155,13 @@
 
     // 操作方法 - 编辑
     function editNotice(id) {
-        var url = '/back/editNotice/' + id;
+        var url = '/assBack/editNotice/' + id;
         popup.open_add('编辑公告', url,800,500)
     }
 
     //添加
     function addNotice(id) {
-        var url = '/back/addNotice';
+        var url = '/assBack/addNotice';
         popup.open_add("发布公告", url,800,500);
     }
 
