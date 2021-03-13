@@ -1,3 +1,4 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page language="java" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,25 +11,57 @@
 <body>
 
 
+<div class="m-t-10 col-md-12" >
+    <div class="well">
+        <div class="row">
+            <form class="form-horizontal" action="" id="" method="post">
+                <div class="form-group">
+                    <label class="col-md-1 control-label">姓名：</label>
+                    <div class="col-md-3">
+                            <input class="form-control" type="text" id="name" name="name" placeholder="请输入姓名">
+                    </div>
+                    <label class="col-md-1 control-label">工号/学号：</label>
+                    <div class="col-md-3">
+                        <input class="form-control" type="text" id="id" name="id" placeholder="请输入学号">
+                    </div>
+                    <label class="col-md-1 control-label">手机号码：</label>
+                    <div class="col-md-3">
+                        <input class="form-control" type="text" id="phone" name="phone" placeholder="请输入手机号码">
+                    </div>
+                    <div class="col-md-3 control-label">
+                        <button class="btn btn-success" type="button" id="search" value="搜索">搜索</button>
+                        <button class="btn  btn-success" type="reset" value="重置">重置</button>
+                        <button class="btn  btn-success" type="reset" value="返回" onclick="window.history.go(-1)">返回</button>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+
+
+    </div>
+</div>
+
 <div class="container-fluid p-t-15">
     <div class="row">
         <div class="col-lg-12">
             <div class="card">
 
                 <div class="card-header">
-                    <h4>公告列表</h4>
+                    <h4>用户列表</h4>
                 </div>
                 <div class="card-body">
 
                     <div id="toolbar" class="toolbar-btn-action">
                         <button id="btn_add" type="button" class="btn btn-primary m-r-5 btn-sm"
-                                onclick="addNotice()">
+                                onclick="addUser()">
                             <span class="mdi mdi-plus " aria-hidden="true"></span>新增
                         </button>
                         <button id="btn_delete" type="button" class="btn btn-danger m-r-5 btn-sm"
-                                onclick="delNotices()">
+                                onclick="delUsers()">
                             <span class="mdi mdi-window-close" aria-hidden="true"></span>删除
                         </button>
+
 
 
                     </div>
@@ -44,7 +77,7 @@
 
 
 <script>
-    var list_url = '/sys/notice';
+    var list_url = '/sys/user/admins';
     $(function () {
     initTable();
         $("#search").bind("click", initTable);
@@ -68,35 +101,57 @@
             pageList: [10, 20, 30],         // 可供选择的每页的行数
             search: true,
             queryParamsType: '',
+            queryParams: function (param) {
+                return {
+                    name:$("#name").val(),
+                    id:$("#id").val(),
+                    phone:$("#phone").val()
+                }
+            },
             columns: [
                 {
                     field: 'check',
                     checkbox: true,
                     align: "center"
                 }, {
-                    field: 'title',
-                    title: '公告标题',
+                    field: 'id',
+                    title: '学号/工号',
                     align: "center"
                 }, {
-                    field: 'count',
-                    title: '浏览次数',
+                    field: 'name',
+                    title: '姓名',
                     align: "center"
                 },{
-                    field: 'associationId',
-                    title: '发布组织',
+                    field: 'sex',
+                    title: '性别',
                     align: "center",
-                    formatter:name
+                    formatter:sexType
                 }, {
-                    field: 'userId',
-                    title: '发布用户Id',
+                    field: 'email',
+                    title: '邮箱',
                     align: "center"
+                }, {
+                    field: 'phone',
+                    title: '手机号码',
+                    align: "center"
+                },{
+                    field: 'className',
+                    title: '班级',
+                    align: "center"
+                }, {
+                    field: 'roleId',
+                    title: '角色',
+                    align: "center",
+                    formatter:function (value) {
+                        if(value==2){
+                            return "社团管理员";
+                        }else if(value==3){
+                            return "系统管理员";
+                        }
+                    }
                 }, {
                     field: 'createTime',
-                    title: '发布时间',
-                    align: "center"
-                }, {
-                    field: 'updateTime',
-                    title: '更新时间',
+                    title: '创建时间',
                     align: "center"
                 },{
                     field: 'operate',
@@ -105,10 +160,13 @@
                     align: 'center',
                     events: {
                         'click .edit-btn': function (event, value, row, index) {
-                            editNotice(row.id);
+                            editUser(row.id);
                         },
                         'click .del-btn': function (event, value, row, index) {
-                            delNotice(row.id);
+                            delUser(row.id);
+                        },
+                        'click .reset-btn': function (event, value, row, index) {
+                            reset(row.id);
                         }
                     }
                 },
@@ -122,57 +180,69 @@
     function btnGroup() {
         var html =
             '<a href="#!" class="btn btn-xs btn-success m-r-5 edit-btn" title="编辑" data-toggle="tooltip"><i class="mdi mdi-pencil"></i></a>' +
-            '<a href="#!" class="btn btn-xs btn-danger m-r-5 del-btn" title="删除" data-toggle="tooltip"><i class="mdi mdi-delete"></i></a>' ;
+            '<a href="#!" class="btn btn-xs btn-danger m-r-5 del-btn" title="删除" data-toggle="tooltip"><i class="mdi mdi-delete"></i></a>' +
+            '<a href="#!" class="btn btn-xs btn-info reset-btn" title="重置密码" data-toggle="tooltip"><i class="mdi mdi-refresh"></i></a>';
         return html;
     }
-    //社团状态显示
-    function name(value,row,index) {
-        if(value=='0'){
-            return "系统管理员";
+    //性别显示
+    function sexType(value,row,index) {
+        if(value == '0'){
+            return "男";
         }else{
-            $.ajax({
-
-                url:  "/sys/association/getAss/"+row.associationId,
-                type:"get",
-                async:false,
-                success: function (data) {
-                    value=data["name"];
-                }
-
-            })
-            return value;
+            return "女";
         }
 
     }
 
-
     // 操作方法 - 编辑
-    function editNotice(id) {
-        var url = '/back/editNotice/' + id;
-        popup.open_add('编辑公告', url,800,500)
+    function editUser(id) {
+        var url = '/back/user/' + id;
+        popup.open_add('编辑用户', url)
     }
 
     //添加
-    function addNotice(id) {
-        var url = '/back/addNotice';
-        popup.open_add("发布公告", url,800,500);
+    function addUser() {
+        var url = '/back/addAdmin';
+        popup.open_add("添加管理员", url);
+    }
+    //查询社团成员
+    function reset(id) {
+        var url = '/sys/user/';
+        layer.confirm("你确定重置密码吗?", {icon: 3, offset: '100px'}, function () {
+            $.ajax({
+                url: url,
+                data:{
+                    "password":id,
+                    "id":id
+                },
+                type: 'post',
+                success: function (response) {
+                    if (response.code == 0) {
+                        layer.msg("重置成功", {icon: 1, time: 1000});
+                    } else {
+                        layer.alert(response.msg, {icon: 5});
+                    }
+                }
+            })
+
+        })
     }
 
     // 操作方法 - 删除 ,单条删除
-    function delNotice(id) {
-        var url = '/sys/notice/';
-        layer.confirm("你确定删除该公告吗?", {icon: 3, offset: '100px'}, function () {
+    function delUser(id) {
+        var url = '/sys/user/';
+        layer.confirm("你确定删除该用户吗?", {icon: 3, offset: '100px'}, function () {
             $.ajax({
                 url: url + id,
                 type: 'delete',
                 success: function (response) {
                     if (response.code == 0) {
                         layer.msg(response.msg, {icon: 1, time: 1000});
-                        // //前台删除
-                        // $('#tb_departments').bootstrapTable('remove', {
-                        //     field: "id",   //此处的 “id”对应的是字段名
-                        //     values: [parseInt(id)]
-                        // });
+                        //前台删除
+                        $('#tb_departments').bootstrapTable('remove', {
+                            field: "id",   //此处的 “id”对应的是字段名
+                            values: [parseInt(id)]
+                        });
                         $('#tb_departments').bootstrapTable('refresh')
 
                     } else {
@@ -186,14 +256,14 @@
     }
 
     //批量删除
-    function delNotices() {
+    function delUsers() {
         var rows = $('#tb_departments').bootstrapTable('getSelections');
         if (rows.length == 0) {
             layer.msg("请选择数据行!", {icon: 2, time: 1000,anim: 6})
         } else if (rows.length == 1) {
             layer.confirm("确认删除?", {icon: 3}, function () {
                 //异步删除一条
-                var url = '/sys/notice/';
+                var url = '/sys/user/';
                 $.ajax({
                     url: url + rows[0].id,
                     type: 'delete',
@@ -215,7 +285,7 @@
                 for (var i = 0; i < rows.length; i++) {
                     ids.push(rows[i].id);
                 }
-                var url = '/sys/notice/';
+                var url = '/sys/user/';
                 $.ajax({
                     url: url,
                     type: 'delete',
@@ -236,6 +306,32 @@
         }
 
     };
+    //点击图片更改图片文件
+    $("#excel").click(function () {
+        $("#file").click();
+    })
+    $('#data_form').submit(function () {
+        $.ajax({
+            url: '/sys/user/import',
+            type: 'put',
+            data: new FormData($("#data_form")[0]),
+            dataType: 'json',
+            cache:false,
+            processData: false, //需设置为false。因为data值是FormData对象，不需要对数据做处理
+            contentType: false, //需设置为false。因为是FormData对象，且已经声明了属性enctype="multipart/form-data"
+            success: function (response) {
+                if (response.code == 0) {
+                    layer.msg(response.msg, {icon: 1, time: 1000}, );
+                } else {
+                    layer.alert(response.msg, {icon: 5, anim: 6});
+                }
+                $('#tb_departments').bootstrapTable('refresh')
+            }
+        })
+    });
+    function importUser(){
+        $("#save").click();
+    }
 
 </script>
 </html>

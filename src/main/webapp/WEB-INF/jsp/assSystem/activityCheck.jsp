@@ -10,28 +10,16 @@
 <body>
 
 
+
 <div class="container-fluid p-t-15">
     <div class="row">
         <div class="col-lg-12">
             <div class="card">
 
                 <div class="card-header">
-                    <h4>公告列表</h4>
+                    <h4><b>待审核活动列表</b></h4>
                 </div>
                 <div class="card-body">
-
-                    <div id="toolbar" class="toolbar-btn-action">
-                        <button id="btn_add" type="button" class="btn btn-primary m-r-5 btn-sm"
-                                onclick="addNotice()">
-                            <span class="mdi mdi-plus " aria-hidden="true"></span>新增
-                        </button>
-                        <button id="btn_delete" type="button" class="btn btn-danger m-r-5 btn-sm"
-                                onclick="delNotices()">
-                            <span class="mdi mdi-window-close" aria-hidden="true"></span>删除
-                        </button>
-
-
-                    </div>
 
                     <table id="tb_departments"></table>
 
@@ -44,7 +32,7 @@
 
 
 <script>
-    var list_url = '/sys/notice';
+    var list_url = '/sys/activity';
     $(function () {
     initTable();
         $("#search").bind("click", initTable);
@@ -68,35 +56,55 @@
             pageList: [10, 20, 30],         // 可供选择的每页的行数
             search: true,
             queryParamsType: '',
+            queryParams: function (param) {
+                return {
+                    status:0
+                }
+            },
             columns: [
                 {
                     field: 'check',
-                    checkbox: true,
-                    align: "center"
+                    checkbox: true
                 }, {
                     field: 'title',
-                    title: '公告标题',
+                    title: '活动标题',
                     align: "center"
                 }, {
-                    field: 'count',
-                    title: '浏览次数',
-                    align: "center"
-                },{
-                    field: 'associationId',
-                    title: '发布组织',
+                    field: 'address',
+                    title: '活动地址',
                     align: "center",
-                    formatter:name
+                    formatter:addressType
+                }, {
+                    field: 'address',
+                    title: '活动地址',
+                    align: "center",
+                    formatter:addressType
+                },{
+                    field: 'maxNum',
+                    title: '活动允许最大参与人数',
+                    align: "center"
                 }, {
                     field: 'userId',
-                    title: '发布用户Id',
+                    title: '活动负责人',
                     align: "center"
                 }, {
+                    field: '',
+                    title: '活动开始时间',
+                    align: "center",
+                    formatter:beginTime
+                },  {
+                    field: '',
+                    title: '活动结束时间',
+                    align: "center",
+                    formatter:endTime
+                },  {
+                    field: 'associationId',
+                    title: '举办社团',
+                    formatter:associationName,
+                    align: "center"
+                },{
                     field: 'createTime',
-                    title: '发布时间',
-                    align: "center"
-                }, {
-                    field: 'updateTime',
-                    title: '更新时间',
+                    title: '申请时间',
                     align: "center"
                 },{
                     field: 'operate',
@@ -105,10 +113,7 @@
                     align: 'center',
                     events: {
                         'click .edit-btn': function (event, value, row, index) {
-                            editNotice(row.id);
-                        },
-                        'click .del-btn': function (event, value, row, index) {
-                            delNotice(row.id);
+                            checkActivity(row.id);
                         }
                     }
                 },
@@ -121,58 +126,75 @@
     // 操作按钮
     function btnGroup() {
         var html =
-            '<a href="#!" class="btn btn-xs btn-success m-r-5 edit-btn" title="编辑" data-toggle="tooltip"><i class="mdi mdi-pencil"></i></a>' +
-            '<a href="#!" class="btn btn-xs btn-danger m-r-5 del-btn" title="删除" data-toggle="tooltip"><i class="mdi mdi-delete"></i></a>' ;
-        return html;
-    }
-    //社团状态显示
-    function name(value,row,index) {
-        if(value=='0'){
-            return "系统管理员";
-        }else{
-            $.ajax({
-
-                url:  "/sys/association/getAss/"+row.associationId,
-                type:"get",
-                async:false,
-                success: function (data) {
-                    value=data["name"];
-                }
-
-            })
-            return value;
-        }
-
+            '<a href="#!" class="btn btn-xs btn-success m-r-5 edit-btn" title="编辑" data-toggle="tooltip"><i class="mdi mdi-pencil"></i></a>'
+         return html;
     }
 
+    //社团名称显示
+    function associationName(value,row,index) {
+        $.ajax({
+            url:  "/sys/association/getAss/"+row.associationId,
+            type:"get",
+            async:false,
+            success: function (data) {
+                value=data.name;
+            }
+        })
+        return value;
+    }
+    //地址显示
+    function addressType(value,row,index) {
+        $.ajax({
+            url:  "/sys/space/getAddress/"+row.address,
+            type:"get",
+            async:false,
+            success: function (data) {
+                value=data.name;
+            }
+        })
+        return value;
+    }
+    function beginTime(value,row,index) {
+        $.ajax({
+            url:  "/sys/activitSpace/getByActivityId/"+row.id,
+            type:"get",
+            async:false,
+            success: function (data) {
+                value=data.beginTime;
+            }
+        })
+        return value;
+    }
+    function endTime(value,row,index) {
+        $.ajax({
+            url:  "/sys/activitSpace/getByActivityId/"+row.id,
+            type:"get",
+            async:false,
+            success: function (data) {
+                value=data.endTime;
+            }
+        })
+        return value;
+
+    }
 
     // 操作方法 - 编辑
-    function editNotice(id) {
-        var url = '/back/editNotice/' + id;
-        popup.open_add('编辑公告', url,800,500)
+    function checkActivity(id) {
+        var url = '/back/checkActivityInfo/' + id;
+        window.location.href=url ;
     }
 
-    //添加
-    function addNotice(id) {
-        var url = '/back/addNotice';
-        popup.open_add("发布公告", url,800,500);
-    }
 
     // 操作方法 - 删除 ,单条删除
-    function delNotice(id) {
-        var url = '/sys/notice/';
-        layer.confirm("你确定删除该公告吗?", {icon: 3, offset: '100px'}, function () {
+    function delAssociation(id) {
+        var url = '/sys/association/';
+        layer.confirm("你确定注销该社团吗?", {icon: 3, offset: '100px'}, function () {
             $.ajax({
                 url: url + id,
                 type: 'delete',
                 success: function (response) {
                     if (response.code == 0) {
                         layer.msg(response.msg, {icon: 1, time: 1000});
-                        // //前台删除
-                        // $('#tb_departments').bootstrapTable('remove', {
-                        //     field: "id",   //此处的 “id”对应的是字段名
-                        //     values: [parseInt(id)]
-                        // });
                         $('#tb_departments').bootstrapTable('refresh')
 
                     } else {
@@ -186,14 +208,14 @@
     }
 
     //批量删除
-    function delNotices() {
+    function delCheckAssociation() {
         var rows = $('#tb_departments').bootstrapTable('getSelections');
         if (rows.length == 0) {
             layer.msg("请选择数据行!", {icon: 2, time: 1000,anim: 6})
         } else if (rows.length == 1) {
             layer.confirm("确认删除?", {icon: 3}, function () {
                 //异步删除一条
-                var url = '/sys/notice/';
+                var url = '/sys/association/';
                 $.ajax({
                     url: url + rows[0].id,
                     type: 'delete',
@@ -215,7 +237,7 @@
                 for (var i = 0; i < rows.length; i++) {
                     ids.push(rows[i].id);
                 }
-                var url = '/sys/notice/';
+                var url = '/sys/association/';
                 $.ajax({
                     url: url,
                     type: 'delete',

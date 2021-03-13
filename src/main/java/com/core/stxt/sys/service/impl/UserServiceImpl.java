@@ -3,6 +3,7 @@ package com.core.stxt.sys.service.impl;
 import cn.hutool.poi.excel.ExcelReader;
 import cn.hutool.poi.excel.ExcelUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.core.stxt.common.model.R;
 import com.core.stxt.common.utils.FileHandlerUtils;
 import com.core.stxt.common.utils.TransferUtils;
 import com.core.stxt.sys.entity.po.Member;
@@ -18,6 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 import java.util.logging.FileHandler;
@@ -35,6 +37,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
 
     @Autowired
     private IMemberService memberService;
+    @Autowired
+    private HttpSession session;
     @Override
     @Transactional
     public boolean deleteAllById(String id) {
@@ -124,4 +128,34 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         List<User> adminList = this.list(wrapper);
         return adminList;
     }
+
+    @Override
+    public R login(User user) {
+        QueryWrapper<User> userQueryWrapper = new QueryWrapper<>();
+        userQueryWrapper.ne(user.getRoleId()!=null,"role_id",user.getRoleId())
+                .eq("id",user.getId());
+        User verityUser = this.getOne(userQueryWrapper);
+        if(verityUser==null){
+            return R.error("用户不存在");
+        }else if(!user.getPassword().equals(verityUser.getPassword())){
+            return R.error("用户名或密码错误");
+        }else{
+            session.setAttribute("user",verityUser);
+            if(verityUser.getRoleId()==1){
+                //学生
+                return R.ok("",200);
+            } else if(verityUser.getRoleId()==2){
+                //社团管理员
+                Member member = memberService.getOne(new QueryWrapper<Member>().eq("user_id", verityUser.getId()).eq("rank", "社长"));
+                session.setAttribute("associationId",member.getAssociationId());
+                return R.ok("");
+            }else if(verityUser.getRoleId()==3){
+                session.setAttribute("associationId",0);
+                return R.ok("/back/system/index");
+            }
+        }
+
+        return R.error("登录出错");
+    }
+
 }

@@ -3,10 +3,13 @@ package com.core.stxt.sys.controller.page;
 import com.core.stxt.common.utils.FileHandlerUtils;
 import com.core.stxt.sys.entity.po.Activity;
 import com.core.stxt.sys.entity.po.Association;
+import com.core.stxt.sys.entity.po.Notice;
 import com.core.stxt.sys.entity.po.User;
 import com.core.stxt.sys.service.IActivityService;
 import com.core.stxt.sys.service.IAssociationService;
+import com.core.stxt.sys.service.INoticeService;
 import com.core.stxt.sys.service.IUserService;
+import io.swagger.models.auth.In;
 import net.bytebuddy.asm.Advice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -34,8 +37,10 @@ public class BackController {
     private IActivityService activityService;
     @Autowired
     private IUserService userService;
+    @Autowired
+    private INoticeService noticeService;
     //--------系统管理员
-    @GetMapping("index")
+    @GetMapping("system/index")
     public String index(){
         return "system/index";
     }
@@ -129,6 +134,22 @@ public class BackController {
     public String noticeList(){
         return "system/noticeList";
     }
+    @GetMapping("addNotice")
+    public String addNotice(){
+        return "system/addNotice";
+    }
+    @GetMapping("editNotice/{id}")
+    public String editNotice(@PathVariable("id")Integer id,Model model){
+        Notice notice = noticeService.getById(id);
+        model.addAttribute("notice",notice);
+        return "system/editNotice";
+    }
+    @GetMapping("login")
+    public String login(){
+        return "login";
+    }
+
+
 
 
 

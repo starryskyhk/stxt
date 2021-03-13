@@ -1,6 +1,7 @@
 package com.core.stxt.sys.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.core.stxt.common.model.R;
 import com.core.stxt.sys.entity.po.User;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -65,4 +66,6 @@ public interface IUserService extends IService<User> {
      * @return
      */
     List<User> adminlist(User user);
+
+    R login(User user);
 }
