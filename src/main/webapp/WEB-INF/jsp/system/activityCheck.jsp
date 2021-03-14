@@ -74,11 +74,6 @@
                     title: '活动地址',
                     align: "center",
                     formatter:addressType
-                }, {
-                    field: 'address',
-                    title: '活动地址',
-                    align: "center",
-                    formatter:addressType
                 },{
                     field: 'maxNum',
                     title: '活动允许最大参与人数',

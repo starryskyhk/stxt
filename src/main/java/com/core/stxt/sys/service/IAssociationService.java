@@ -59,4 +59,11 @@ public interface IAssociationService extends IService<Association> {
      * @return
      */
     List<MemberInfo> getMemberByAssociationId(Integer associationId);
+
+    /**
+     * 根据id查询该社团中待审核的成员
+     * @param associationId
+     * @return
+     */
+    List<MemberInfo> getCheckMemberByAssociationId(Integer associationId);
 }

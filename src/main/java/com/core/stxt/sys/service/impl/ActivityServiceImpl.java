@@ -39,7 +39,8 @@ public class ActivityServiceImpl extends ServiceImpl<ActivityMapper, Activity> i
     @Override
     public List<Activity> list(Activity activity) {
         QueryWrapper<Activity> wrapper = new QueryWrapper<Activity>();
-        wrapper.eq(activity.getStatus()!=null,"status",activity.getStatus());
+        wrapper.eq(activity.getStatus()!=null,"status",activity.getStatus())
+                .eq(activity.getAssociationId()!=null,"association_id",activity.getAssociationId());
         List<Activity> activityList = this.list(wrapper);
         return activityList;
     }

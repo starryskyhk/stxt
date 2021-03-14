@@ -1,14 +1,8 @@
 package com.core.stxt.sys.controller.page;
 
 import com.core.stxt.common.utils.FileHandlerUtils;
-import com.core.stxt.sys.entity.po.Activity;
-import com.core.stxt.sys.entity.po.Association;
-import com.core.stxt.sys.entity.po.Notice;
-import com.core.stxt.sys.entity.po.User;
-import com.core.stxt.sys.service.IActivityService;
-import com.core.stxt.sys.service.IAssociationService;
-import com.core.stxt.sys.service.INoticeService;
-import com.core.stxt.sys.service.IUserService;
+import com.core.stxt.sys.entity.po.*;
+import com.core.stxt.sys.service.*;
 import io.swagger.models.auth.In;
 import net.bytebuddy.asm.Advice;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +33,8 @@ public class BackController {
     private IUserService userService;
     @Autowired
     private INoticeService noticeService;
+    @Autowired
+    private ISpaceService spaceService;
     //--------系统管理员
     @GetMapping("system/index")
     public String index(){
@@ -143,6 +139,21 @@ public class BackController {
         Notice notice = noticeService.getById(id);
         model.addAttribute("notice",notice);
         return "system/editNotice";
+    }
+    //---------场地管理
+    @GetMapping("spaceList")
+    public String spaceList(){
+        return "system/spaceList";
+    }
+    @GetMapping("editSpace/{id}")
+    public String editSpace(@PathVariable("id")Integer id,Model model){
+        Space space = spaceService.getById(id);
+        model.addAttribute("space",space);
+        return "system/editSpace";
+    }
+    @GetMapping("addSpace")
+    public String addSpace(){
+        return "system/addSpace";
     }
     @GetMapping("login")
     public String login(){

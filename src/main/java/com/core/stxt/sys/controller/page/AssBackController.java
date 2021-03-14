@@ -1,13 +1,7 @@
 package com.core.stxt.sys.controller.page;
 
-import com.core.stxt.sys.entity.po.Activity;
-import com.core.stxt.sys.entity.po.Association;
-import com.core.stxt.sys.entity.po.Notice;
-import com.core.stxt.sys.entity.po.User;
-import com.core.stxt.sys.service.IActivityService;
-import com.core.stxt.sys.service.IAssociationService;
-import com.core.stxt.sys.service.INoticeService;
-import com.core.stxt.sys.service.IUserService;
+import com.core.stxt.sys.entity.po.*;
+import com.core.stxt.sys.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,6 +26,8 @@ public class AssBackController {
     private IUserService userService;
     @Autowired
     private INoticeService noticeService;
+    @Autowired
+    private IMemberService memberService;
     //--------系统管理员
     @GetMapping("index")
     public String index(){
@@ -70,6 +66,16 @@ public class AssBackController {
         model.addAttribute("id",id);
         return "assSystem/addMember";
     }
+    @GetMapping("/checkMemberList")
+    public String checkMemberList(){
+        return "assSystem/checkMemberList";
+    }
+    @GetMapping("/editMember/{id}")
+    public String editMember(@PathVariable("id") Integer id,Model model){
+        Member member = memberService.getById(id);
+        model.addAttribute("member",member);
+        return "assSystem/editMember";
+    }
     //-------------审核管理
     @GetMapping("assCheck")
     public String assCeck(){
@@ -84,9 +90,10 @@ public class AssBackController {
         model.addAttribute("association",association);
         return "assSystem/checkAssInfo";
     }
-    @GetMapping("activityCheck")
+
+    @GetMapping("activityList")
     public String activityCheck(){
-        return "assSystem/activityCheck";
+        return "assSystem/activityList";
     }
     @GetMapping("/checkActivityInfo/{id}")
     public String checkActivityInfo(@PathVariable("id") Integer id, Model model){

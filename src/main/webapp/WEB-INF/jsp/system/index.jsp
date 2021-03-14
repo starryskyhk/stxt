@@ -84,6 +84,16 @@
                 <li>
                     <a class="J_menuItem">
                         <i class="fa fa-building"></i>
+                        <span class="nav-label">场地管理</span>
+                    </a>
+                    <ul class="nav nav-second-level">
+                        <li><a class="J_menuItem" href="/back/spaceList">场地列表</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="J_menuItem">
+                        <i class="fa fa-building"></i>
                         <span class="nav-label">用戶管理</span>
                     </a>
                     <ul class="nav nav-second-level">

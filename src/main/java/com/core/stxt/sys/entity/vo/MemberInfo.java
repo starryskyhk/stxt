@@ -51,4 +51,8 @@ public class MemberInfo {
      * 用户加入时间
      */
     private LocalDateTime createTime;
+    /**
+     * 用户状态
+     */
+    private Integer status;
 }

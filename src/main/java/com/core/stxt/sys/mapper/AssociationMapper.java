@@ -21,4 +21,6 @@ public interface AssociationMapper extends BaseMapper<Association> {
      * @return
      */
     List<MemberInfo> selectMemberListById(Integer associationId);
+
+    List<MemberInfo> selectCheckMemberListById(Integer associationId);
 }

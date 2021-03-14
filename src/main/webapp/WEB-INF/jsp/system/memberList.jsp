@@ -76,6 +76,7 @@
             queryParamsType: '',
             queryParams: function (param) {
                 return {
+                    status:0
                 }
             },
             columns: [

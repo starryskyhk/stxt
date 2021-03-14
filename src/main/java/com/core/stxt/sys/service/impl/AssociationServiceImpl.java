@@ -108,4 +108,10 @@ public class AssociationServiceImpl extends ServiceImpl<AssociationMapper,Associ
         List<MemberInfo> memberInfoList = associationMapper.selectMemberListById(associationId);
         return memberInfoList;
     }
+
+    @Override
+    public List<MemberInfo> getCheckMemberByAssociationId(Integer associationId) {
+        List<MemberInfo> memberInfoList = associationMapper.selectCheckMemberListById(associationId);
+        return memberInfoList;
+    }
 }

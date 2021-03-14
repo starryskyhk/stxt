@@ -82,6 +82,12 @@ public class AssociationController {
         List<MemberInfo> memberList = associationService.getMemberByAssociationId(associationId);
         return memberList;
     }
+    @ApiOperation(value = "查看某社团中的待审核成员")
+    @GetMapping("/check/{associationId}")
+    public List<MemberInfo> getCheckMember(@PathVariable("associationId") Integer associationId){
+        List<MemberInfo> memberList = associationService.getCheckMemberByAssociationId(associationId);
+        return memberList;
+    }
 
     @ApiOperation(value = "社团审核")
     @PostMapping("/audit")

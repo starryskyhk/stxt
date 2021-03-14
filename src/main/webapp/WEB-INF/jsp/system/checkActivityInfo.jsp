@@ -157,7 +157,7 @@
                 url: url,
                 data:{
                     "id":$("#id").val(),
-                    "status":3
+                    "status":4
                 },
                 type: 'post',
                 success: function (response) {

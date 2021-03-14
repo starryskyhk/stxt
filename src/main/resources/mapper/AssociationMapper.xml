@@ -1,12 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.core.stxt.sys.mapper.AssociationMapper">
-
     <select id="selectMemberListById" resultType="com.core.stxt.sys.entity.vo.MemberInfo">
-        select member.id as member_id,member.user_id,member.rank,member.create_time,user.name,`user`.sex,`user`.class_name,`user`.phone
-        from member INNER JOIN user on member.user_id = user.id
-        where member.association_id=#{associationId}
-        order by member.create_time desc
+        SELECT member.id AS member_id,
+               member.user_id,
+               member.rank,
+               member.create_time,
+               user.NAME,
+               `user`.sex,
+               `user`.class_name,
+               `user`.phone,
+               status
+        FROM member
+                     INNER JOIN `user` ON member.user_id = `user`.id
+        WHERE member.association_id = #{associationId}
+          and status = 0
+        ORDER BY member.create_time DESC
     </select>
-
+    <select id="selectCheckMemberListById" resultType="com.core.stxt.sys.entity.vo.MemberInfo">
+        SELECT member.id AS member_id,
+               member.user_id,
+               member.rank,
+               member.create_time,
+               user.NAME,
+               `user`.sex,
+               `user`.class_name,
+               `user`.phone,
+               status
+        FROM member
+                     INNER JOIN `user` ON member.user_id = `user`.id
+        WHERE member.association_id = #{associationId}
+          and status = 1
+        ORDER BY member.create_time DESC
+    </select>
 </mapper>

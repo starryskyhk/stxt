@@ -44,6 +44,13 @@ public class MemberController {
         memberService.deleteIds(Arrays.asList(ids.split(",")));
         return R.ok("批量删除成功");
     }
+    @ApiOperation(value = "修改社团成员信息")
+    @PostMapping("")
+    public R edit(Member member){
+        memberService.updateById(member);
+        return R.ok("修改成功");
+    }
+
 
 
 

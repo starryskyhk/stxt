@@ -75,7 +75,7 @@
                         <span class="nav-label">活动管理</span>
                     </a>
                     <ul class="nav nav-second-level">
-                        <li><a class="J_menuItem" href="/assBack/assCheck">活动列表</a>
+                        <li><a class="J_menuItem" href="/assBack/activityList">活动列表</a>
                         </li>
                         <li><a class="J_menuItem" href="/assBack/activityCheck">活动场地管理</a>
                         </li>
@@ -87,9 +87,9 @@
                         <span class="nav-label">社员管理</span>
                     </a>
                     <ul class="nav nav-second-level">
-                        <li><a class="J_menuItem" href="/assBack/userList">成员列表</a>
+                        <li><a class="J_menuItem" href="/assBack/members/${sessionScope.associationId}">成员列表</a>
                         </li>
-                        <li><a class="J_menuItem" href="/assBack/adminList">审核列表</a>
+                        <li><a class="J_menuItem" href="/assBack/checkMemberList">审核列表</a>
                         </li>
                     </ul>
                 </li>
