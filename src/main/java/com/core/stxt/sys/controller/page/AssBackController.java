@@ -95,13 +95,19 @@ public class AssBackController {
     public String activityCheck(){
         return "assSystem/activityList";
     }
-    @GetMapping("/checkActivityInfo/{id}")
-    public String checkActivityInfo(@PathVariable("id") Integer id, Model model){
-        //通过id获取到社团对象
+
+    @GetMapping("addActivity")
+    public String addActivity(){
+        return "assSystem/addActivity";
+    }
+
+    @GetMapping("/activityInfo/{id}")
+    public String activityInfo(@PathVariable("id") Integer id, Model model){
+        //通过id获取到活动对象
         Activity activity = activityService.getById(id);
         //将社团对象信息添加到model中
         model.addAttribute("activity",activity);
-        return "assSystem/checkActivityInfo";
+        return "assSystem/activityInfo";
     }
 
     //-------------用户管理

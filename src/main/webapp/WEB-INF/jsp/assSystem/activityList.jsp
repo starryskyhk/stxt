@@ -19,6 +19,19 @@
                 <div class="card-header">
                     <h4><b>活动列表</b></h4>
                 </div>
+                <div id="toolbar" class="toolbar-btn-action">
+                    <button id="btn_add" type="button" class="btn btn-primary m-r-5 btn-sm"
+                            onclick="addActivity()">
+                        <span class="mdi mdi-plus " aria-hidden="true"></span>发布活动
+                    </button>
+                    <button id="btn_delete" type="button" class="btn btn-danger m-r-5 btn-sm"
+                            onclick="delActivitys()">
+                        <span class="mdi mdi-window-close" aria-hidden="true"></span>删除活动
+                    </button>
+
+
+                </div>
+
                 <div class="card-body">
                     <input hidden value="${sessionScope.associationId}" name="associationId" id="associationId">
                     <table id="tb_departments"></table>
@@ -74,11 +87,6 @@
                     title: '活动地址',
                     align: "center",
                     formatter:addressType
-                }, {
-                    field: 'address',
-                    title: '活动地址',
-                    align: "center",
-                    formatter:addressType
                 },{
                     field: 'maxNum',
                     title: '活动允许最大参与人数',
@@ -113,7 +121,7 @@
                     align: 'center',
                     events: {
                         'click .edit-btn': function (event, value, row, index) {
-                            checkActivity(row.id);
+                            activityInfo(row.id);
                         }
                     }
                 },
@@ -130,7 +138,7 @@
          return html;
     }
 
-    //社团名称显示
+    //活动状态显示
     function status(value,row,index) {
         if(value=='0'){
             return "待审批";
@@ -178,16 +186,18 @@
     }
 
     // 操作方法 - 编辑
-    function checkActivity(id) {
-        var url = '/back/checkActivityInfo/' + id;
+    function activityInfo(id) {
+        var url = '/assBack/activityInfo/' + id;
         window.location.href=url;
     }
-
+    function addActivity() {
+        window.location.href="/assBack/addActivity";
+    }
 
     // 操作方法 - 删除 ,单条删除
-    function delAssociation(id) {
-        var url = '/sys/association/';
-        layer.confirm("你确定注销该社团吗?", {icon: 3, offset: '100px'}, function () {
+    function delActivity(id) {
+        var url = '/sys/activity/';
+        layer.confirm("你确定删除该活动吗?", {icon: 3, offset: '100px'}, function () {
             $.ajax({
                 url: url + id,
                 type: 'delete',
@@ -207,14 +217,14 @@
     }
 
     //批量删除
-    function delCheckAssociation() {
+    function delActivitys() {
         var rows = $('#tb_departments').bootstrapTable('getSelections');
         if (rows.length == 0) {
             layer.msg("请选择数据行!", {icon: 2, time: 1000,anim: 6})
         } else if (rows.length == 1) {
             layer.confirm("确认删除?", {icon: 3}, function () {
                 //异步删除一条
-                var url = '/sys/association/';
+                var url = '/sys/activity/';
                 $.ajax({
                     url: url + rows[0].id,
                     type: 'delete',

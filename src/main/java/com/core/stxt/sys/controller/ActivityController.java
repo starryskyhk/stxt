@@ -37,6 +37,7 @@ public class ActivityController {
     @ApiOperation(value = "根据条件获取活动列表")
     @GetMapping("")
     public List<Activity> getActivityList(Activity activity){
+        System.out.println(activity);
         List<Activity> activityList = activityService.list(activity);
         return activityList;
     }

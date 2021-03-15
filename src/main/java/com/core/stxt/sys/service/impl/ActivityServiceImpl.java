@@ -54,7 +54,6 @@ public class ActivityServiceImpl extends ServiceImpl<ActivityMapper, Activity> i
         activitySpaceService.remove(new UpdateWrapper<ActivitySpace>().eq("activity_id",id));
         //再删除活动表
         activityMapper.deleteById(id);
-
         return true;
     }
 

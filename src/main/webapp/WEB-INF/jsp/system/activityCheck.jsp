@@ -183,7 +183,7 @@
     // 操作方法 - 删除 ,单条删除
     function delAssociation(id) {
         var url = '/sys/association/';
-        layer.confirm("你确定注销该社团吗?", {icon: 3, offset: '100px'}, function () {
+        layer.confirm("你确定删除该活动吗吗?", {icon: 3, offset: '100px'}, function () {
             $.ajax({
                 url: url + id,
                 type: 'delete',
