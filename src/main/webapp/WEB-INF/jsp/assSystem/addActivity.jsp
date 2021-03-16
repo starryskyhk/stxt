@@ -13,6 +13,24 @@
                 <div class="card-header">
                     <h4>发布活动</h4>
                 </div>
+                <!-- Modal -->
+                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                            </div>
+                            <div class="modal-body">
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="card-body">
                     <form class="form-horizontal col-lg-6" method="post" onsubmit="return false;" id="data_form">
                         <div class="form-group">
@@ -57,7 +75,7 @@
                         <div class="form-group">
                             <label class="col-sm-3 control-label">场地</label>
                             <div class="col-sm-8">
-                                <button class="btn btn-primary" type="submit" id="choose">选择场地</button>
+                                <button data-toggle="modal" data-target="#myModal" class="btn btn-primary" type="button" id="choose">选择场地</button>
                             </div>
                         </div>
 
@@ -75,7 +93,7 @@
                                 <button class="btn btn-primary" type="submit" id="save">发布
                                 </button>
                                 <a href="/assBack/activityList">
-                                    <button class="btn btn-primary" type="button">返回</button>
+                                    <button  class="btn btn-primary" type="button">返回</button>
                                 </a>
                             </div>
                         </div>

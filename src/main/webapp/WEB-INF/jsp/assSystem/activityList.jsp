@@ -194,28 +194,6 @@
         window.location.href="/assBack/addActivity";
     }
 
-    // 操作方法 - 删除 ,单条删除
-    function delActivity(id) {
-        var url = '/sys/activity/';
-        layer.confirm("你确定删除该活动吗?", {icon: 3, offset: '100px'}, function () {
-            $.ajax({
-                url: url + id,
-                type: 'delete',
-                success: function (response) {
-                    if (response.code == 0) {
-                        layer.msg(response.msg, {icon: 1, time: 1000});
-                        $('#tb_departments').bootstrapTable('refresh')
-
-                    } else {
-                        layer.alert(response.msg, {icon: 5});
-                    }
-                }
-            })
-
-        })
-
-    }
-
     //批量删除
     function delActivitys() {
         var rows = $('#tb_departments').bootstrapTable('getSelections');
@@ -246,7 +224,7 @@
                 for (var i = 0; i < rows.length; i++) {
                     ids.push(rows[i].id);
                 }
-                var url = '/sys/association/';
+                var url = '/sys/activity/';
                 $.ajax({
                     url: url,
                     type: 'delete',

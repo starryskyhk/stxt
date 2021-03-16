@@ -32,7 +32,7 @@
                         <div class="form-group">
 
                             <div class="col-md-9 col-md-offset-3">
-                                <button class="btn btn-primary" type="submit"  id="save">保存
+                                <button class="btn btn-primary" type="submit"  >保存
                                 </button>
                             </div>
                         </div>

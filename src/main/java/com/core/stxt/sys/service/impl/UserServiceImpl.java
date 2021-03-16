@@ -143,7 +143,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
             session.setAttribute("user",verityUser);
             if(verityUser.getRoleId()==1){
                 //学生
-                return R.ok("",200);
+                return R.ok("/front/index",200);
             } else if(verityUser.getRoleId()==2){
                 //社团管理员
                 Member member = memberService.getOne(new QueryWrapper<Member>().eq("user_id", verityUser.getId()).eq("rank", "社长"));

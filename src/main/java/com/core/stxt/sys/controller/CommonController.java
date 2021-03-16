@@ -22,7 +22,7 @@ public class CommonController {
     @Autowired
     private IUserService userService;
 
-    @ApiOperation(value = "管理员登录")
+    @ApiOperation(value = "登录")
     @PostMapping("/login")
     public R login(User user){
        R url = userService.login(user);
