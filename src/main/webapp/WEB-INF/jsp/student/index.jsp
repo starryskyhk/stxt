@@ -1,25 +1,23 @@
-
 <%@ page language="java" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zxx" class="no-js">
 <head>
     <meta charset="utf-8">
     <title>渭南师范学院社团管理平台</title>
-    <%@include file="/WEB-INF/jsp/common.jsp" %>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
-
+    <%@include file="/WEB-INF/jsp/common2.jsp"%>
 </head>
 <body onload="showDT()">
-<%@include file="/WEB-INF/jsp/student/head.jsp" %>
+
 
 <div class="site-main-container">
+    <!-- Start top-post Area -->
+    <%@include file="/WEB-INF/jsp/student/head.jsp"%>
     <section class="top-post-area pt-10">
         <div class="container no-padding">
             <div class="row small-gutters">
                 <div class="col-lg-12">
                     <div class="news-tracker-wrap">
-                        <h6><span>今日活动推荐:</span> <a href="#">找找适合你的社团活动吧~</a></h6>
+                        <h6><span>今日活动推荐:</span>   <a href="#">找找适合你的社团活动吧~</a></h6>
                     </div>
                 </div>
                 <div class="col-lg-8 top-post-left">
@@ -46,7 +44,7 @@
                     <div class="single-top-post">
                         <div class="feature-image-thumb relative">
                             <div class="overlay overlay-bg"></div>
-                            <img class="img-fluid" src="img/top-post2.jpg" alt="">
+                            <img class="img-fluid" src="/img/top-post2.jpg" alt="">
                         </div>
                         <div class="top-post-details">
                             <ul class="tags">
@@ -237,8 +235,7 @@
                                         <li><a href="#"><span class="lnr lnr-calendar-full"></span>2020-7-2</a></li>
                                         <li><a href="#"><span class="lnr lnr-bubble"></span>06 评论</a></li>
                                     </ul>
-                                    <p class="excert">挥毫泼墨，挥洒淋漓</br>
-                                        拓宽学生的学习范围，学习更多的文化知识，丰富课外学习生活，完善自身的知识体系。由于应试教育的影响，同学们对传统文化了解甚少，通过此次活动让学生学习到更多的传统文化，提升自身文化修养。宣传书法文化，让更多人的人了解并学习书法知识，传承发扬传统文化</p>
+                                    <p class="excert">挥毫泼墨，挥洒淋漓</br>拓宽学生的学习范围，学习更多的文化知识，丰富课外学习生活，完善自身的知识体系。由于应试教育的影响，同学们对传统文化了解甚少，通过此次活动让学生学习到更多的传统文化，提升自身文化修养。宣传书法文化，让更多人的人了解并学习书法知识，传承发扬传统文化</p>
                                 </div>
                             </div>
                             <div class="col-lg-6 single-popular-post">
@@ -260,8 +257,7 @@
                                         <li><a href="#"><span class="lnr lnr-calendar-full"></span>2020-7-2</a></li>
                                         <li><a href="#"><span class="lnr lnr-bubble"></span>06 评论</a></li>
                                     </ul>
-                                    <p class="excert">
-                                        阳光志愿者协会作为作为渭南师范学院学生社团中人数最多，活动范围最大的社团，已经成立十六载的优秀社团。先后被渭南电视台，《渭南日报》、华山网、渭南青年网等媒体报道，连续多年被授予“十佳社团”，“五星级社团”，“优秀志愿服务组织”“优秀志愿者团队”“爱心志愿者团体”等荣誉称号。</p>
+                                    <p class="excert">阳光志愿者协会作为作为渭南师范学院学生社团中人数最多，活动范围最大的社团，已经成立十六载的优秀社团。先后被渭南电视台，《渭南日报》、华山网、渭南青年网等媒体报道，连续多年被授予“十佳社团”，“五星级社团”，“优秀志愿服务组织”“优秀志愿者团队”“爱心志愿者团体”等荣誉称号。</p>
                                 </div>
                             </div>
                         </div>
@@ -381,8 +377,7 @@
                                         <div class="detail">
                                             <a href="image-post.html"><h6>让青春为祖国绽放主题团日活动</h6></a>
                                             <ul class="meta">
-                                                <li><a href="#"><span class="lnr lnr-calendar-full"></span>2020-7-2</a>
-                                                </li>
+                                                <li><a href="#"><span class="lnr lnr-calendar-full"></span>2020-7-2</a></li>
                                                 <li><a href="#"><span class="lnr lnr-bubble"></span>06 评论</a></li>
                                             </ul>
                                         </div>
@@ -394,8 +389,7 @@
                                         <div class="detail">
                                             <a href="image-post.html"><h6>弘扬宪法精神。推进依法治校</h6></a>
                                             <ul class="meta">
-                                                <li><a href="#"><span class="lnr lnr-calendar-full"></span>2020-7-2</a>
-                                                </li>
+                                                <li><a href="#"><span class="lnr lnr-calendar-full"></span>2020-7-2</a></li>
                                                 <li><a href="#"><span class="lnr lnr-bubble"></span>06 评论</a></li>
                                             </ul>
                                         </div>
@@ -407,8 +401,7 @@
                                         <div class="detail">
                                             <a href="image-post.html"><h6>积极分子培训班</h6></a>
                                             <ul class="meta">
-                                                <li><a href="#"><span class="lnr lnr-calendar-full"></span>2020-7-2</a>
-                                                </li>
+                                                <li><a href="#"><span class="lnr lnr-calendar-full"></span>2020-7-2</a></li>
                                                 <li><a href="#"><span class="lnr lnr-bubble"></span>06 评论</a></li>
                                             </ul>
                                         </div>
@@ -438,8 +431,7 @@
                                         <li><a href="#"><span class="lnr lnr-bubble"></span>06 评论</a></li>
                                     </ul>
                                     <p class="excert">
-                                        在中国共产党领导下，中国人民凭着一股逢山开路、遇水架桥的闯劲，凭着一股滴水穿石的韧劲，成功走出一条中国特色社会主义道路。
-                                        为提高国人的整体素质，习近平主席在十九大中提出“做好人读好书写好字”的观点，而且书法已经被纳入中学生的必修课程中，足以看出国家领导人对非物质文化的重视与保护。
+                                        在中国共产党领导下，中国人民凭着一股逢山开路、遇水架桥的闯劲，凭着一股滴水穿石的韧劲，成功走出一条中国特色社会主义道路。 为提高国人的整体素质，习近平主席在十九大中提出“做好人读好书写好字”的观点，而且书法已经被纳入中学生的必修课程中，足以看出国家领导人对非物质文化的重视与保护。
                                     </p>
                                 </div>
                                 <div class="post-lists">
@@ -450,8 +442,7 @@
                                         <div class="detail">
                                             <a href="image-post.html"><h6>大学生防艾知识竞赛</h6></a>
                                             <ul class="meta">
-                                                <li><a href="#"><span class="lnr lnr-calendar-full"></span>2020-7-2</a>
-                                                </li>
+                                                <li><a href="#"><span class="lnr lnr-calendar-full"></span>2020-7-2</a></li>
                                                 <li><a href="#"><span class="lnr lnr-bubble"></span>06 评论</a></li>
                                             </ul>
                                         </div>
@@ -463,8 +454,7 @@
                                         <div class="detail">
                                             <a href="image-post.html"><h6>科技创意制作大赛</h6></a>
                                             <ul class="meta">
-                                                <li><a href="#"><span class="lnr lnr-calendar-full"></span>2020-7-2</a>
-                                                </li>
+                                                <li><a href="#"><span class="lnr lnr-calendar-full"></span>2020-7-2</a></li>
                                                 <li><a href="#"><span class="lnr lnr-bubble"></span>06 评论</a></li>
                                             </ul>
                                         </div>
@@ -476,8 +466,7 @@
                                         <div class="detail">
                                             <a href="image-post.html"><h6>电子创新设计大赛</h6></a>
                                             <ul class="meta">
-                                                <li><a href="#"><span class="lnr lnr-calendar-full"></span>2020-7-2</a>
-                                                </li>
+                                                <li><a href="#"><span class="lnr lnr-calendar-full"></span>2020-7-2</a></li>
                                                 <li><a href="#"><span class="lnr lnr-bubble"></span>06 评论</a></li>
                                             </ul>
                                         </div>
@@ -573,7 +562,7 @@
             <div class="col-lg-3 col-md-6 single-footer-widget">
                 <h4>联系我们</h4>
                 <ul>
-                    <li>学校地址：陕西省渭南市朝阳大街中段</li>
+                    <li>学校地址：陕西省渭南市朝阳大街中段 </li>
                     <li>邮编：714099</li>
 
                 </ul>
@@ -582,22 +571,6 @@
         </div>
     </div>
 </footer>
-<script>
-    var days = ["日", "一", "二", "三", "四", "五", "六"];
 
-    function showDT() {
-        var currentDT = new Date();
-        var y, m, date, day, hs, ms, ss, theDateStr;
-        y = currentDT.getFullYear(); //四位整数表示的年份
-        m = currentDT.getMonth() + 1; //月
-        date = currentDT.getDate(); //日
-        day = currentDT.getDay(); //星期
-        theDateStr = y + "年" + m + "月" + date + "日 星期" + days[day];
-        document.getElementById("theClock").innerHTML = theDateStr;
-        // setTimeout 在执行时,是在载入后延迟指定时间后,去执行一次表达式,仅执行一次
-        window.setTimeout(showDT, 1000);
-    }
-
-</script>
 </body>
 </html>

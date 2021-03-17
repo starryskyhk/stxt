@@ -33,4 +33,54 @@
           and status = 1
         ORDER BY member.create_time DESC
     </select>
+    <resultMap id="UserJoinAssociation" type="com.core.stxt.sys.entity.vo.UserInAssociation">
+        <result column="type" property="type"/>
+        <result column="user_name" property="userName"/>
+        <result column="member_status" property="memberStatus"/>
+        <association property="association" javaType="com.core.stxt.sys.entity.po.Association">
+            <id column="id" property="id"/>
+            <result column="name" property="name"/>
+            <result column="img_url" property="imgUrl"/>
+            <result column="brief" property="brief"/>
+            <result column="qq" property="qq"/>
+            <result column="email" property="email"/>
+        </association>
+    </resultMap>
+    <select id="selectCreateByUser" resultMap="UserJoinAssociation">
+        SELECT association.*,
+               type.NAME     as type,
+               `user`.name   as user_name,
+               member.status as member_status
+        FROM association
+                     INNER JOIN member ON association.id = member.association_id
+                     INNER JOIN type ON association.type_id = type.id
+                     LEFT JOIN user on association.student_id = `user`.id
+        WHERE member.user_id = #{id}
+          AND member.rank = '社长'
+    </select>
+
+    <select id="selectJoinByUser" resultMap="UserJoinAssociation">
+        SELECT association.*,
+               type.NAME     as type,
+               `user`.name   as user_name,
+               member.status as member_status
+        FROM association
+                     INNER JOIN member ON association.id = member.association_id
+                     INNER JOIN type ON association.type_id = type.id
+                     LEFT JOIN user on association.student_id = `user`.id
+        WHERE member.user_id = #{id}
+          AND member.rank = '社员'
+    </select>
+    <select id="selectAssociationById" resultMap="UserJoinAssociation">
+        SELECT association.*,
+               type.NAME     as type,
+               `user`.name   as user_name,
+               member.status as member_status
+        FROM association
+                     INNER JOIN member ON association.id = member.association_id
+                     INNER JOIN type ON association.type_id = type.id
+                     LEFT JOIN user on association.student_id = `user`.id
+<!--                     TODO:待完成，应增加学生id-->
+        WHERE association.id = #{id}
+    </select>
 </mapper>

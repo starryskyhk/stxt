@@ -68,4 +68,10 @@ public interface IUserService extends IService<User> {
     List<User> adminlist(User user);
 
     R login(User user);
+
+    /**
+     * 登出
+     * @return
+     */
+    boolean exit();
 }

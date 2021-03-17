@@ -141,7 +141,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
             return R.error("用户名或密码错误");
         }else{
             session.setAttribute("user",verityUser);
-            if(verityUser.getRoleId()==1){
+               if(verityUser.getRoleId()==1){
                 //学生
                 return R.ok("/front/index",200);
             } else if(verityUser.getRoleId()==2){
@@ -156,6 +156,12 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         }
 
         return R.error("登录出错");
+    }
+
+    @Override
+    public boolean exit() {
+        session.invalidate();
+        return true;
     }
 
 }

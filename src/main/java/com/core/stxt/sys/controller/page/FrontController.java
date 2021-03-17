@@ -1,8 +1,20 @@
 package com.core.stxt.sys.controller.page;
 
+import com.core.stxt.sys.entity.po.Notice;
+import com.core.stxt.sys.entity.po.User;
+import com.core.stxt.sys.entity.vo.UserInAssociation;
+import com.core.stxt.sys.service.IAssociationService;
+import com.core.stxt.sys.service.INoticeService;
+import com.core.stxt.sys.service.IUserService;
+import io.swagger.models.auth.In;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.List;
 
 /**
  * @ClassName : FrontController
@@ -13,6 +25,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping(value = "/front")
 public class FrontController {
+    @Autowired
+    private INoticeService noticeService;
+    @Autowired
+    private IUserService userService;
+    @Autowired
+    private IAssociationService associationService;
     //新闻动态
     @GetMapping("xwdt")
     public String xwdt(){
@@ -24,8 +42,10 @@ public class FrontController {
         return "student/xw_ade";
     }
     //社团详情
-    @GetMapping("stad")
-    public String stad(){
+    @GetMapping("stad/{id}")
+    public String stad(@PathVariable("id") Integer id,Model model){
+        UserInAssociation association =  associationService.getAssociationInfoById(id);
+        model.addAttribute("assInfo",association);
         return "student/st_ade";
     }
     //社团
@@ -35,17 +55,29 @@ public class FrontController {
     }
     //通知公告
     @GetMapping("notice")
-    public String notice(){
+    public String notice(Model model){
+        List<Notice> notices = noticeService.list();
+        String[] ass = {"123","233"};
+        model.addAttribute("notices",notices);
+        model.addAttribute("ass",ass);
         return "student/notice";
     }
     //基本资料
-    @GetMapping("myinfo")
-    public String myinfo(){
+    @GetMapping("myinfo/{id}")
+    public String myinfo(@PathVariable("id") Integer id,Model model){
+        User user = userService.getById(id);
+        model.addAttribute("user",user);
         return "student/myinfo";
     }
     //个人社团
-    @GetMapping("mycom")
-    public String mycom(){
+    @GetMapping("mycom/{id}")
+    public String mycom(@PathVariable("id") Integer id,Model model){
+        //查询被该用户创建的社团
+        List<UserInAssociation> userCreate=associationService.getCreateByUser(id);
+        //查询该用户参加的社团
+        List<UserInAssociation> userJoin = associationService.getJoinByUser(id);
+        model.addAttribute("userCreate",userCreate);
+        model.addAttribute("userJoin",userJoin);
         return "student/mycom";
     }
     //个人活动

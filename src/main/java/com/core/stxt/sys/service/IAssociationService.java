@@ -3,6 +3,7 @@ package com.core.stxt.sys.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.core.stxt.sys.entity.po.Association;
 import com.core.stxt.sys.entity.vo.MemberInfo;
+import com.core.stxt.sys.entity.vo.UserInAssociation;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
@@ -66,4 +67,25 @@ public interface IAssociationService extends IService<Association> {
      * @return
      */
     List<MemberInfo> getCheckMemberByAssociationId(Integer associationId);
+
+    /**
+     * 查询用户创建的社团
+     * @param id
+     * @return
+     */
+    List<UserInAssociation> getCreateByUser(Integer id);
+
+    /**
+     * 查询用户加入的社团
+     * @param id
+     * @return
+     */
+    List<UserInAssociation> getJoinByUser(Integer id);
+
+    /**
+     * 根据id获取社团详细信息
+     * @param id
+     * @return
+     */
+    UserInAssociation getAssociationInfoById(Integer id);
 }

@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <title>社团创办</title>
-    <%@include file="/WEB-INF/jsp/common.jsp" %>
+    <%@include file="/WEB-INF/jsp/common2.jsp" %>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <style type="text/css">
         .flot {
@@ -55,8 +55,10 @@
                                     <section class="panel">
                                         <div class="panel-body">
                                             <div class=" form">
-                                                <form class="cmxform form-horizontal adminex-form" id="commentForm"
-                                                      method="post" action="">
+                                                <form enctype="multipart/form-data" onsubmit="return false;"
+                                                      class="cmxform form-horizontal adminex-form" id="data_form"
+                                                      method="put">
+                                                    <input hidden name="studentId" value="${sessionScope.user.id}">
                                                     <div style="overflow: hidden;" class=" flot form-group center">
                                                         <label for="name" class=" control-label ">社团名称：</label>
                                                         <div class="col-lg-3 ">
@@ -66,15 +68,10 @@
                                                                    onblur="this.placeholder = '请输入社团名称'" required=""/>
                                                         </div>
                                                         <label for="type" class=" control-label">社团类别：</label>
-                                                        <div id="type" class="col-lg-3 ">
-                                                            <select id="typeId" name="typeId"
+                                                        <div id="" class="col-lg-3 ">
+                                                            <select id="type" name="typeId"
                                                                     style="font-size: 14px;height: 35.5px"
                                                                     class="form-control">
-                                                                <option>思想政治类</option>
-                                                                <option>学术科技类</option>
-                                                                <option>创新创业类</option>
-                                                                <option>志愿公益类</option>
-                                                                <option>自律互助类</option>
                                                             </select>
                                                         </div>
                                                     </div>
@@ -103,7 +100,7 @@
                                                         <label for="curl" class="control-label ">联系方式：</label>
                                                         <div class="col-lg-3">
                                                             <input class="form-control " id="phone" type="text"
-                                                                   name="phone"
+                                                                   name="teacherId"
                                                                    placeholder="请输入老师联系方式"
                                                                    onfocus="this.placeholder = ''"
                                                                    onblur="this.placeholder = '请输入老师联系方式'" required=""/>
@@ -165,29 +162,13 @@
 </div>
 
 <script>
-    var days = ["日", "一", "二", "三", "四", "五", "六"];
-
-    function showDT() {
-        var currentDT = new Date();
-        var y, m, date, day, hs, ms, ss, theDateStr;
-        y = currentDT.getFullYear(); //四位整数表示的年份
-        m = currentDT.getMonth() + 1; //月
-        date = currentDT.getDate(); //日
-        day = currentDT.getDay(); //星期
-        theDateStr = y + "年" + m + "月" + date + "日 星期" + days[day];
-        document.getElementById("theClock").innerHTML = theDateStr;
-        // setTimeout 在执行时,是在载入后延迟指定时间后,去执行一次表达式,仅执行一次
-        window.setTimeout(showDT, 1000);
-    }
-
-
     $(function () {
         $.get(
             "/sys/type/0",
             {},
             function (data) {
                 var types = data["types"];
-                for(var i=0;i<types.length;i++){
+                for (var i = 0; i < types.length; i++) {
                     $("#type").append("<option value='" + types[i].id + "'>" + types[i].name + "</option>")
                 }
             }
@@ -199,17 +180,20 @@
         $.ajax({
             url: '/sys/association',
             type: 'put',
-            data:  new FormData($("#data_form")[0]),
+            data: new FormData($("#data_form")[0]),
             dataType: 'json',
-            cache:false,
+            cache: false,
             processData: false, //需设置为false。因为data值是FormData对象，不需要对数据做处理
             contentType: false, //需设置为false。因为是FormData对象，且已经声明了属性enctype="multipart/form-data"
             success: function (response) {
                 if (response.code == 0) {
                     //成功，显示提示消息，并刷新表格
-                    popup.layermsg(response.msg, 'tb_departments');
+                    popup.layermsg("申请成功，请等待审核", 'tb_departments');
+                    setTimeout(function () {
+                        location.reload();
+                    }, 2000);
                 } else {
-                    layer.alert(response.msg, {icon: 5,anim: 6});
+                    layer.alert(response.msg, {icon: 5, anim: 6});
                 }
             }
         })

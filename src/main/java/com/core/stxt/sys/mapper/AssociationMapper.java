@@ -3,6 +3,7 @@ package com.core.stxt.sys.mapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.core.stxt.sys.entity.po.Association;
 import com.core.stxt.sys.entity.vo.MemberInfo;
+import com.core.stxt.sys.entity.vo.UserInAssociation;
 
 import java.util.List;
 
@@ -23,4 +24,11 @@ public interface AssociationMapper extends BaseMapper<Association> {
     List<MemberInfo> selectMemberListById(Integer associationId);
 
     List<MemberInfo> selectCheckMemberListById(Integer associationId);
+
+    List<UserInAssociation> selectCreateByUser(Integer id);
+
+    List<UserInAssociation> selectJoinByUser(Integer id);
+
+    UserInAssociation selectAssociationById(Integer id);
+
 }

@@ -5,6 +5,7 @@ import com.core.stxt.common.utils.FileHandlerUtils;
 import com.core.stxt.sys.entity.po.Association;
 import com.core.stxt.sys.entity.po.Member;
 import com.core.stxt.sys.entity.vo.MemberInfo;
+import com.core.stxt.sys.entity.vo.UserInAssociation;
 import com.core.stxt.sys.mapper.AssociationMapper;
 import com.core.stxt.sys.service.IAssociationService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -113,5 +114,20 @@ public class AssociationServiceImpl extends ServiceImpl<AssociationMapper,Associ
     public List<MemberInfo> getCheckMemberByAssociationId(Integer associationId) {
         List<MemberInfo> memberInfoList = associationMapper.selectCheckMemberListById(associationId);
         return memberInfoList;
+    }
+
+    @Override
+    public List<UserInAssociation> getCreateByUser(Integer id) {
+       return  associationMapper.selectCreateByUser(id);
+    }
+
+    @Override
+    public List<UserInAssociation> getJoinByUser(Integer id) {
+        return  associationMapper.selectJoinByUser(id);
+    }
+
+    @Override
+    public UserInAssociation getAssociationInfoById(Integer id) {
+        return  associationMapper.selectAssociationById(id);
     }
 }

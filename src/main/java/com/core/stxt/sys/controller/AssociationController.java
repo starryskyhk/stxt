@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.core.stxt.common.model.R;
 import com.core.stxt.sys.entity.po.Association;
 import com.core.stxt.sys.entity.vo.MemberInfo;
+import com.core.stxt.sys.entity.vo.UserInAssociation;
 import com.core.stxt.sys.service.IAssociationService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -94,6 +95,12 @@ public class AssociationController {
     public R auditAssociation(Association association){
         associationService.updateById(association);
         return R.ok("审核成功");
+    }
+    @ApiOperation(value = "获取用户创建社团信息")
+    @GetMapping("/createByUser/{id}")
+    public R createByUser(@PathVariable("id") Integer id){
+        List<UserInAssociation> createByUser = associationService.getCreateByUser(id);
+        return R.ok("成功",createByUser);
     }
 
 
