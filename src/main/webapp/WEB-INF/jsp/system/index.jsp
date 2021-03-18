@@ -114,39 +114,12 @@
                     </ul>
                 </li>
                 <li class="line dk"></li>
-
-                <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
-                    <span class="ng-scope">活动审批</span>
-                </li>
-                <li>
-                    <a class="J_menuItem" href="/tea_fin_activ" d><i class="fa fa-paste"></i> <span class="nav-label">未处理</span></a>
-
-                </li>
-
-                <li>
-                    <a class="J_menuItem" href="/tea_fin_activ_W"><i class="fa fa-asterisk"></i> <span
-                            class="nav-label">已处理</span></a>
-                </li>
-
                 <li class="line dk"></li>
                 <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
                     <span class="ng-scope">个人管理</span>
                 </li>
                 <li>
-                    <a href="/mailbox"><i class="fa fa-envelope"></i> <span class="nav-label">信箱 </span><span
-                            class="label label-warning pull-right">16</span></a>
-                    <ul class="nav nav-second-level">
-                        <li><a class="J_menuItem" href="/mailbox">收件箱</a>
-                        </li>
-                        <li><a class="J_menuItem" href="/mail_detal">查看邮件</a>
-                        </li>
-                        <li><a class="J_menuItem" href="/mail_compose">写信</a>
-                        </li>
-                    </ul>
-                </li>
-
-                <li>
-                    <a class="J_menuItem" href="/tea_info"><i class="fa fa-archive"></i> <span
+                    <a class="J_menuItem" href="/back/editInfo"><i class="fa fa-archive"></i> <span
                             class="nav-label">信息修改</span></a>
 
                 </li>
@@ -165,60 +138,15 @@
                 </div>
                 <ul class="nav navbar-top-links navbar-right">
                     <li class="dropdown">
-                        <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
-                            <i class="fa fa-envelope"></i> <span class="label label-warning">16</span>
-                        </a>
-                        <ul class="dropdown-menu dropdown-messages">
-                            <li class="m-t-xs">
-                                <div class="dropdown-messages-box">
-                                    <a href="#" class="pull-left">
-                                        <img alt="image" class="img-circle" src="img/a7.jpg">
-                                    </a>
-                                    <div class="media-body">
-                                        <small class="pull-right">46小时前</small>
-                                        <strong>小四</strong>
-                                        <br>
-                                        <small class="text-muted">3天前 2014.11.8</small>
-                                    </div>
-                                </div>
-                            </li>
-
-
-                            <li class="divider"></li>
-                            <li>
-                                <div class="text-center link-block">
-                                    <a class="J_menuItem" href="/mailbox">
-                                        <i class="fa fa-envelope"></i> <strong> 查看所有消息</strong>
-                                    </a>
-                                </div>
-                            </li>
-                        </ul>
+                        <b>
+                            <p style="font-size: 18px;color:black;font-family: '黑体';padding-top: 13px">系统管理员:${sessionScope.user.name},您好<a style="font-size: 18px;color:blue;font-family: '黑体';padding-top: 13px" href="/exit">退出</a></p>
+                        </b>
                     </li>
 
-                    <li class="dropdown">
-                        <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
-                            <i class="fa fa-bell"></i> <span class="label label-primary">8</span>
-                        </a>
-                        <ul class="dropdown-menu dropdown-alerts">
-                            <li>
-                                <a href="/mailbox">
-                                    <div>
-                                        <i class="fa fa-envelope fa-fw"></i> 活动申请更新啦
-                                        <span class="pull-right text-muted small">4分钟前</span>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="divider"></li>
-                            <li>
-                                <div class="text-center link-block">
-                                    <a class="J_menuItem" href="#">
-                                        <strong>查看所有 </strong>
-                                        <i class="fa fa-angle-right"></i>
-                                    </a>
-                                </div>
-                            </li>
-                        </ul>
-                    </li>
+
+                </ul>
+                </li>
+
                 </ul>
             </nav>
         </div>

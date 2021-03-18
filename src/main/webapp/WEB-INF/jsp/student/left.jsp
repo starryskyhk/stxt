@@ -37,7 +37,7 @@
 
                     <div class="single-post d-flex flex-row">
                         <div class="detail" style="padding-left:34%;">
-                            <a href="#"><h6>我的活动</h6></a>
+                            <a href="/front/myact"><h6>我的活动</h6></a>
                         </div>
                     </div>
 

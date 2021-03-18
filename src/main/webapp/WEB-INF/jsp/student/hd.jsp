@@ -28,11 +28,11 @@
                                     <img class="img-fluid" src="/img/l1.jpg" alt="">
                                 </div>
                                 <ul class="tags">
-                                    <li><a href="adetails.html">点击详情</a></li>
+                                    <li><a href="/front/hdad">点击详情</a></li>
                                 </ul>
                             </div>
                             <div class="col-lg-7 post-right">
-                                <a href="image-post.html">
+                                <a href="/front/hdad">
                                     <h4>第二届网络征文暨摄影大赛</h4>
                                 </a>
                                 <ul class="meta">
@@ -54,11 +54,11 @@
                                     <img class="img-fluid" src="/img/l2.jpg" alt="">
                                 </div>
                                 <ul class="tags">
-                                    <li><a href="adetails.html">点击详情</a></li>
+                                    <li><a href="/front/hdad">点击详情</a></li>
                                 </ul>
                             </div>
                             <div class="col-lg-7 post-right">
-                                <a href="image-post.html">
+                                <a href="/front/hdad">
                                     <h4>学生诚信教育主题活动</h4>
                                 </a>
                                 <ul class="meta">
@@ -79,11 +79,11 @@
                                     <img class="img-fluid" src="/img/l2.jpg" alt="">
                                 </div>
                                 <ul class="tags">
-                                    <li><a href="adetails.html">点击详情</a></li>
+                                    <li><a href="/front/hdad">点击详情</a></li>
                                 </ul>
                             </div>
                             <div class="col-lg-7 post-right">
-                                <a href="image-post.html">
+                                <a href="/front/hdad">
                                     <h4>学生诚信教育主题活动</h4>
                                 </a>
                                 <ul class="meta">
@@ -104,11 +104,11 @@
                                     <img class="img-fluid" src="/img/l2.jpg" alt="">
                                 </div>
                                 <ul class="tags">
-                                    <li><a href="adetails.html">点击详情</a></li>
+                                    <li><a href="/front/hdad">点击详情</a></li>
                                 </ul>
                             </div>
                             <div class="col-lg-7 post-right">
-                                <a href="image-post.html">
+                                <a href="/front/hdad">
                                     <h4>学生诚信教育主题活动</h4>
                                 </a>
                                 <ul class="meta">
@@ -129,11 +129,11 @@
                                     <img class="img-fluid" src="/img/l3.jpg" alt="">
                                 </div>
                                 <ul class="tags">
-                                    <li><a href="adetails.html">点击详情</a></li>
+                                    <li><a href="/front/hdad">点击详情</a></li>
                                 </ul>
                             </div>
                             <div class="col-lg-7 post-right">
-                                <a href="image-post.html">
+                                <a href="/front/hdad">
                                     <h4>历史文化推送征文</h4>
                                 </a>
                                 <ul class="meta">
@@ -157,7 +157,7 @@
                                 </ul>
                             </div>
                             <div class="col-lg-7 post-right">
-                                <a href="image-post.html">
+                                <a href="/front/hdad">
                                     <h4>悦享经典，阅读打卡</h4>
                                 </a>
                                 <ul class="meta">
@@ -170,6 +170,8 @@
                                 </p>
                             </div>
                         </div>
+
+
                     </div>
                     <!-- End latest-post Area -->
 
@@ -181,27 +183,11 @@
 
             </div>
         </div>
+    </section>
 </div>
 </div>
 </section>
 </div>
 
-<script>
-    var days = ["日", "一", "二", "三", "四", "五", "六"];
-
-    function showDT() {
-        var currentDT = new Date();
-        var y, m, date, day, hs, ms, ss, theDateStr;
-        y = currentDT.getFullYear(); //四位整数表示的年份
-        m = currentDT.getMonth() + 1; //月
-        date = currentDT.getDate(); //日
-        day = currentDT.getDay(); //星期
-        theDateStr = y + "年" + m + "月" + date + "日 星期" + days[day];
-        document.getElementById("theClock").innerHTML = theDateStr;
-        // setTimeout 在执行时,是在载入后延迟指定时间后,去执行一次表达式,仅执行一次
-        window.setTimeout(showDT, 1000);
-    }
-
-</script>
 </body>
 </html>

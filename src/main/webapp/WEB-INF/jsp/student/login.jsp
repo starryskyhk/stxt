@@ -15,6 +15,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <link href="/css/style2.css" rel="stylesheet" type='text/css' media="all"/>
     <link rel="stylesheet" href="/css/linearicons.css">
     <script type="text/javascript" src="/js/jquery-3.5.1.min.js"></script>
+    <script type="text/javascript" src="/js/layer/layer.js"></script>
     <!-- /css -->
 </head>
 <body>

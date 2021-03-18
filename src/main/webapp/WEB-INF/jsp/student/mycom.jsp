@@ -52,16 +52,16 @@
                                                     </div>
                                                     <div class="top-post-details">
                                                         <ul class="tags">
-                                                            <li><a href="/front/stad/${ass.association.id}">点击详情</a>
+                                                            <li><a href="/front/stad/${ass.association.id}/${sessionScope.user.id}">点击详情</a>
                                                             </li>
                                                         </ul>
-                                                        <a href="/front/stad/${ass.association.id}">
+                                                        <a href="/front/stad/${ass.association.id}/${sessionScope.user.id}">
                                                             <h4>${ass.association.name}</h4>
                                                         </a>
                                                         <ul class="meta" id="">
-                                                            <li><a href="/front/stad/${ass.association.id}"><span
+                                                            <li><a href="/front/stad/${ass.association.id}/${sessionScope.user.id}"><span
                                                                     class="lnr "></span>${ass.association.id}</a></li>
-                                                            <li><a href="/front/stad/${ass.association.id}"><span
+                                                            <li><a href="/front/stad/${ass.association.id}/${sessionScope.user.id}"><span
                                                                     class="lnr lnr-bookmark"></span>${ass.type}</a>
                                                             </li>
                                                         </ul>
@@ -92,16 +92,16 @@
                                                     </div>
                                                     <div class="top-post-details">
                                                         <ul class="tags">
-                                                            <li><a href="/front/stad/${ass.association.id}">点击详情</a>
+                                                            <li><a href="/front/stad/${ass.association.id}/${sessionScope.user.id}">点击详情</a>
                                                             </li>
                                                         </ul>
-                                                        <a href="/front/stad/${ass.association.id}">
+                                                        <a href="/front/stad/${ass.association.id}/${sessionScope.user.id}">
                                                             <h4>${ass.association.name}</h4>
                                                         </a>
                                                         <ul class="meta">
-                                                            <li><a href="/front/stad/${ass.association.id}"><span
+                                                            <li><a href="/front/stad/${ass.association.id}/${sessionScope.user.id}"><span
                                                                     class="lnr "></span>${ass.association.id}</a></li>
-                                                            <li><a href="/front/stad/${ass.association.id}"><span
+                                                            <li><a href="/front/stad/${ass.association.id}/${sessionScope.user.id}"><span
                                                                     class="lnr lnr-bookmark"></span>${ass.type}</a>
                                                             </li>
                                                         </ul>

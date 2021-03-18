@@ -11,72 +11,64 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4>更改社团信息</h4>
+                    <h4>更改个人信息</h4>
                 </div>
                 <div class="card-body">
                     <form class="form-horizontal col-lg-6" method="post" onsubmit="return false;" id="data_form">
-                        <input type="hidden" name="id" id="id" value="${association.id}">
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">社团名称</label>
+                            <label class="col-sm-3 control-label">学号/工号</label>
                             <div class="col-sm-8">
-                                <input class="form-control" value="${association.name}" type="text" placeholder="请输入社团名称" name="name"
-                                       id="name">
+                                <input class="form-control" name="id" id="id" readonly value="${sessionScope.user.id}" type="text" >
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">社团简介</label>
+                            <label class="col-sm-3 control-label">姓名</label>
                             <div class="col-sm-8">
-                                <textarea class="form-control"  placeholder="请输入社团简介"  name="brief" id="brief">
-                                    ${association.brief}
-                                </textarea>
+                                <input class="form-control" readonly  value="${sessionScope.user.name}" type="text" name="name"  id="name" placeholder="请输入姓名" >
+
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">社团类型</label>
+                            <label class="col-sm-3 control-label">性别</label>
                             <div class="col-sm-8">
-                                <input type="hidden" id="typeId" value="${association.typeId}" >
-                                <select class="form-control" name="typeId" id="type">
-                                    <option value="">请选择社团类型</option>
+                                <select disabled class="form-control" name="sex" id="sex">
+                                    <option value="">请选择性别</option>
+                                    <option value="0" ${user.sex==0?"selected":""}>男</option>
+                                    <option value="1" ${user.sex==1?"selected":""}>女</option>
                                 </select>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">封面图片</label>
+                            <label class="col-sm-3 control-label">个人头像</label>
                             <div class="col-sm-8">
-                                <input type="hidden" name="imgUrl" value="${association.imgUrl}">
-                                <img src="${association.imgUrl}" id="image" width="200px" height="200px">
+                                <input type="hidden" name="imgUrl" value="${user.imgUrl}">
+                                <img src="${user.imgUrl}" id="image" width="200px" height="200px">
                                 <input type="file" style="display: none" name="file" id="file" onchange="fileupload()" >
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">官方QQ</label>
+                            <label class="col-sm-3 control-label">手机号码</label>
                             <div class="col-sm-8">
-                                <input value="${association.qq}" class="form-control" type="text" name="qq" id="qq">
+                                <input  value="${user.phone}" class="form-control" type="text" name="phone" id="phone">
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">官方邮箱</label>
+                            <label class="col-sm-3 control-label">邮箱</label>
                             <div class="col-sm-8">
-                                <input value="${association.email}" class="form-control" type="text" name="email" id="email">
+                                <input value="${user.email}" class="form-control" type="text" name="email" id="email">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">社团负责人id</label>
+                            <label class="col-sm-3 control-label">新密码</label>
                             <div class="col-sm-8">
-                                <input class="form-control" value="${association.studentId}" type="text" name="studentId" id="studentId">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label">负责老师工号</label>
-                            <div class="col-sm-8">
-                                <input class="form-control" value="${association.teacherId}" type="text" name="teacherId" id="teacherId">
+                                <input class="form-control" type="text" name="password" id="password">
                             </div>
                         </div>
                         <div class="form-group">
 
                             <div class="col-md-9 col-md-offset-3">
-                                <button class="btn btn-primary" type="submit" style="display: none;" id="save">保存
+                                <button class="btn btn-primary" type="submit"  id="save">更改
                                 </button>
                             </div>
                         </div>
@@ -89,26 +81,6 @@
 
 </body>
 <script>
-    var type_url = "/sys/type/"
-    $(function () {
-        var typeId = $("#typeId").val();
-        $.get(
-            type_url+0,
-            {},
-            function (data) {
-                var types = data["types"];
-                for(var i=0;i<types.length;i++){
-                    if(typeId==types[i].id){
-                        $("#type").append("<option selected value='" + types[i].id + "'>" + types[i].name + "</option>")
-                    }else{
-                        $("#type").append("<option  value='" + types[i].id + "'>" + types[i].name + "</option>")
-
-                    }
-                }
-            }
-
-        )
-    })
     function fileupload(){
         var file = document.getElementById("file");
         for(var i=0;i<file.files.length;i++){
@@ -127,7 +99,7 @@
     })
     $('#data_form').submit(function () {
         $.ajax({
-            url: '/sys/association',
+            url: '/sys/user',
             type: 'post',
             data: new FormData($("#data_form")[0]),
             dataType: 'json',
@@ -137,9 +109,7 @@
             success: function (response) {
                 if (response.code == 0) {
                     layer.msg(response.msg, {icon: 1, time: 1000}, function () {
-                        var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
-                        parent.layer.close(index); //再执行关闭
-                        parent.$('#tb_departments').bootstrapTable('refresh')
+                        parent.location.href="/exit";
                     });
                 } else {
                     layer.alert(response.msg, {icon: 5, anim: 6});

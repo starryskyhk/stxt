@@ -4,6 +4,11 @@
 <head>
     <%@include file="/WEB-INF/jsp/common.jsp" %>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <style>
+        .ordered{
+            background-color: cornflowerblue;
+        }
+    </style>
 </head>
 <body>
 <div class="container-fluid p-t-15">
@@ -22,11 +27,21 @@
                                 <h4 class="modal-title" id="myModalLabel">Modal title</h4>
                             </div>
                             <div class="modal-body">
+                                <p><button style="background-color: cornflowerblue" type="button"/>已预订</button>
+                              <button type="button"/>未预订</button>
+                                </p>
+                                        <button class="ordered" type="button">5306</button>
+                                        <button class="order" type="button">5306</button>
+                                        <button class="order"  type="button">5307</button>
+                                        <button class="order" type="button">5308</button>
+                                        <button class="order" type="button">5309</button>
+                                        <button class="order" type="button">5505</button>
+
 
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Save changes</button>
+                                <button id="exit" type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                                <button id="saveSpace" type="button" class="btn btn-primary">确定</button>
                             </div>
                         </div>
                     </div>
@@ -50,7 +65,7 @@
                             <label class="col-sm-3 control-label">活动封面</label>
                             <div class="col-sm-8">
                                 <input type="hidden" name="imgUrl" value="">
-                                <img src="" id="image" width="200px" height="200px">
+                                <img src="/file/default.png" id="image" width="200px" height="200px">
                                 <input type="file" style="display: none" name="file" id="file" onchange="fileupload()">
                             </div>
                         </div>
@@ -74,8 +89,8 @@
                         </div>
                         <div class="form-group">
                             <label class="col-sm-3 control-label">场地</label>
-                            <div class="col-sm-8">
-                                <button data-toggle="modal" data-target="#myModal" class="btn btn-primary" type="button" id="choose">选择场地</button>
+                            <div class="col-sm-8" >
+                                <button id="space" data-toggle="modal" data-target="#myModal" class="btn btn-primary" type="button" id="choose">选择场地</button>
                             </div>
                         </div>
 
@@ -142,5 +157,18 @@
             }
         })
     });
+    $(".order").click(function () {
+        $(this).removeClass("order");
+        $(this).addClass("ordered");
+
+    })
+    $(".ordered").click(function () {
+        $(this).removeClass("ordered");
+        $(this).addClass("order");
+    })
+    $("#saveSpace").click(function () {
+        $("#exit").click();
+        $("#space").text("5306");
+    })
 </script>
 </html>

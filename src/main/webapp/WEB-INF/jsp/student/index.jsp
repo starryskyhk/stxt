@@ -28,9 +28,9 @@
                     </div>
                     <div class="top-post-details">
                         <ul class="tags">
-                            <li><a href="adetails.html">点击详情</a></li>
+                            <li><a href="/front/hdad">点击详情</a></li>
                         </ul>
-                        <a href="image-post.html">
+                        <a href="/front/hdad">
                             <h3>全国大学生网络营销知识竞赛</h3>
                         </a>
                         <ul class="meta">
@@ -48,9 +48,9 @@
                         </div>
                         <div class="top-post-details">
                             <ul class="tags">
-                                <li><a href="adetails.html">点击详情</a></li>
+                                <li><a href="/front/hdad">点击详情</a></li>
                             </ul>
-                            <a href="image-post.html">
+                            <a href="/front/hdad">
                                 <h4>青年大学习主题团课</h4>
                             </a>
                             <ul class="meta">
@@ -67,9 +67,9 @@
                         </div>
                         <div class="top-post-details">
                             <ul class="tags">
-                                <li><a href="adetails.html">点击详情</a></li>
+                                <li><a href="/front/hdad">点击详情</a></li>
                             </ul>
-                            <a href="image-post.html">
+                            <a href="/front/hdad">
                                 <h4>活力科技月</h4>
                             </a>
                             <ul class="meta">
@@ -100,11 +100,11 @@
                                     <img class="img-fluid" src="/img/l1.jpg" alt="">
                                 </div>
                                 <ul class="tags">
-                                    <li><a href="adetails.html">点击详情</a></li>
+                                    <li><a href="/front/hdad">点击详情</a></li>
                                 </ul>
                             </div>
                             <div class="col-lg-7 post-right">
-                                <a href="image-post.html">
+                                <a href="/front/hdad">
                                     <h4>第二届网络征文暨摄影大赛</h4>
                                 </a>
                                 <ul class="meta">
@@ -128,7 +128,7 @@
                                 </ul>
                             </div>
                             <div class="col-lg-7 post-right">
-                                <a href="image-post.html">
+                                <a href="/front/hdad">
                                     <h4>学生诚信教育主题活动</h4>
                                 </a>
                                 <ul class="meta">
@@ -152,7 +152,7 @@
                                 </ul>
                             </div>
                             <div class="col-lg-7 post-right">
-                                <a href="image-post.html">
+                                <a href="/front/hdad">
                                     <h4>历史文化推送征文</h4>
                                 </a>
                                 <ul class="meta">
@@ -176,7 +176,7 @@
                                 </ul>
                             </div>
                             <div class="col-lg-7 post-right">
-                                <a href="image-post.html">
+                                <a href="/front/hdad">
                                     <h4>悦享经典，阅读打卡</h4>
                                 </a>
                                 <ul class="meta">
@@ -203,9 +203,9 @@
                             </div>
                             <div class="details">
                                 <ul class="tags">
-                                    <li><a href="#">点击详情</a></li>
+                                    <li><a href="/front/hdad">点击详情</a></li>
                                 </ul>
-                                <a href="image-post.html">
+                                <a href="/front/hdad">
                                     <h3>"英语星空"学习促进会</h3>
                                 </a>
                                 <ul class="meta">
@@ -223,7 +223,7 @@
                                         <img class="img-fluid" src="/img/l2.jpg" alt="">
                                     </div>
                                     <ul class="tags">
-                                        <li><a href="#">点击详情</a></li>
+                                        <li><a href="/front/hdad">点击详情</a></li>
                                     </ul>
                                 </div>
                                 <div class="details">
@@ -245,11 +245,11 @@
                                         <img class="img-fluid" src="/img/l1.jpg" alt="">
                                     </div>
                                     <ul class="tags">
-                                        <li><a href="#">点击详情</a></li>
+                                        <li><a href="/front/hdad">点击详情</a></li>
                                     </ul>
                                 </div>
                                 <div class="details">
-                                    <a href="image-post.html">
+                                    <a href="/front/hdad">
                                         <h4>阳光志愿者协会</h4>
                                     </a>
                                     <ul class="meta">
@@ -274,11 +274,11 @@
                                         <img class="img-fluid" src="/img/r1.jpg" alt="">
                                     </div>
                                     <ul class="tags">
-                                        <li><a href="#">点击详情</a></li>
+                                        <li><a href="/front/hdad">点击详情</a></li>
                                     </ul>
                                 </div>
                                 <div class="col-lg-7 post-right">
-                                    <a href="image-post.html">
+                                    <a href="/front/hdad">
                                         <h4>寻找会发光的你</h4>
                                     </a>
                                     <ul class="meta">
@@ -298,11 +298,11 @@
                                         <img class="img-fluid" src="/img/r2.jpg" alt="">
                                     </div>
                                     <ul class="tags">
-                                        <li><a href="#">点击详情</a></li>
+                                        <li><a href="/front/hdad">点击详情</a></li>
                                     </ul>
                                 </div>
                                 <div class="col-lg-7 post-right">
-                                    <a href="image-post.html">
+                                    <a href="/front/hdad">
                                         <h4>世界等着你去发现</h4>
                                     </a>
                                     <ul class="meta">
@@ -322,11 +322,11 @@
                                         <img class="img-fluid" src="/img/r3.jpg" alt="">
                                     </div>
                                     <ul class="tags">
-                                        <li><a href="#">点击详情</a></li>
+                                        <li><a href="/front/hdad">点击详情</a></li>
                                     </ul>
                                 </div>
                                 <div class="col-lg-7 post-right">
-                                    <a href="image-post.html">
+                                    <a href="/front/hdad">
                                         <h4>科普！制作视频简历有多难</h4>
                                     </a>
                                     <ul class="meta">
@@ -354,11 +354,11 @@
                                         <img class="img-fluid" src="/img/e1.jpg" alt="">
                                     </div>
                                     <ul class="tags">
-                                        <li><a href="#">点击详情</a></li>
+                                        <li><a href="/front/hdad">点击详情</a></li>
                                     </ul>
                                 </div>
                                 <div class="details">
-                                    <a href="image-post.html">
+                                    <a href="/front/hdad">
                                         <h4 class="mt-20">我们都是收信人</h4>
                                     </a>
                                     <ul class="meta">
@@ -375,7 +375,7 @@
                                             <img src="/img/e2.jpg" alt="">
                                         </div>
                                         <div class="detail">
-                                            <a href="image-post.html"><h6>让青春为祖国绽放主题团日活动</h6></a>
+                                            <a href="/front/hdad"><h6>让青春为祖国绽放主题团日活动</h6></a>
                                             <ul class="meta">
                                                 <li><a href="#"><span class="lnr lnr-calendar-full"></span>2020-7-2</a></li>
                                                 <li><a href="#"><span class="lnr lnr-bubble"></span>06 评论</a></li>
@@ -387,7 +387,7 @@
                                             <img src="/img/e3.jpg" alt="">
                                         </div>
                                         <div class="detail">
-                                            <a href="image-post.html"><h6>弘扬宪法精神。推进依法治校</h6></a>
+                                            <a href="/front/hdad"><h6>弘扬宪法精神。推进依法治校</h6></a>
                                             <ul class="meta">
                                                 <li><a href="#"><span class="lnr lnr-calendar-full"></span>2020-7-2</a></li>
                                                 <li><a href="#"><span class="lnr lnr-bubble"></span>06 评论</a></li>
@@ -399,7 +399,7 @@
                                             <img src="/img/e4.jpg" alt="">
                                         </div>
                                         <div class="detail">
-                                            <a href="image-post.html"><h6>积极分子培训班</h6></a>
+                                            <a href="/front/hdad"><h6>积极分子培训班</h6></a>
                                             <ul class="meta">
                                                 <li><a href="#"><span class="lnr lnr-calendar-full"></span>2020-7-2</a></li>
                                                 <li><a href="#"><span class="lnr lnr-bubble"></span>06 评论</a></li>
@@ -419,11 +419,11 @@
                                         <img class="img-fluid" src="/img/e1.jpg" alt="">
                                     </div>
                                     <ul class="tags">
-                                        <li><a href="#">点击详情</a></li>
+                                        <li><a href="/front/hdad">点击详情</a></li>
                                     </ul>
                                 </div>
                                 <div class="details">
-                                    <a href="image-post.html">
+                                    <a href="/front/hdad">
                                         <h4 class="mt-20">书法比赛</h4>
                                     </a>
                                     <ul class="meta">
@@ -440,7 +440,7 @@
                                             <img src="/img/e2.jpg" alt="">
                                         </div>
                                         <div class="detail">
-                                            <a href="image-post.html"><h6>大学生防艾知识竞赛</h6></a>
+                                            <a href="/front/hdad"><h6>大学生防艾知识竞赛</h6></a>
                                             <ul class="meta">
                                                 <li><a href="#"><span class="lnr lnr-calendar-full"></span>2020-7-2</a></li>
                                                 <li><a href="#"><span class="lnr lnr-bubble"></span>06 评论</a></li>
@@ -452,7 +452,7 @@
                                             <img src="/img/e3.jpg" alt="">
                                         </div>
                                         <div class="detail">
-                                            <a href="image-post.html"><h6>科技创意制作大赛</h6></a>
+                                            <a href="/front/hdad"><h6>科技创意制作大赛</h6></a>
                                             <ul class="meta">
                                                 <li><a href="#"><span class="lnr lnr-calendar-full"></span>2020-7-2</a></li>
                                                 <li><a href="#"><span class="lnr lnr-bubble"></span>06 评论</a></li>
@@ -464,7 +464,7 @@
                                             <img src="/img/e4.jpg" alt="">
                                         </div>
                                         <div class="detail">
-                                            <a href="image-post.html"><h6>电子创新设计大赛</h6></a>
+                                            <a href="/front/hdad"><h6>电子创新设计大赛</h6></a>
                                             <ul class="meta">
                                                 <li><a href="#"><span class="lnr lnr-calendar-full"></span>2020-7-2</a></li>
                                                 <li><a href="#"><span class="lnr lnr-bubble"></span>06 评论</a></li>
@@ -481,7 +481,7 @@
                                     <img src="/img/m1.jpg" alt="">
                                 </div>
                                 <div class="details">
-                                    <a href="image-post.html">
+                                    <a href="/front/hdad">
                                         <h6>寻找会发光的你</h6>
                                     </a>
                                     <ul class="meta">
@@ -495,7 +495,7 @@
                                     <img src="/img/m2.jpg" alt="">
                                 </div>
                                 <div class="details">
-                                    <a href="image-post.html">
+                                    <a href="/front/hdad">
                                         <h6>世界等着你去发现</h6>
                                     </a>
                                     <ul class="meta">
@@ -509,7 +509,7 @@
                                     <img src="/img/m3.jpg" alt="">
                                 </div>
                                 <div class="details">
-                                    <a href="image-post.html">
+                                    <a href="/front/hdad">
                                         <h6>关于读书的故事 </h6>
                                     </a>
                                     <ul class="meta">
@@ -523,7 +523,7 @@
                                     <img src="/img/m4.jpg" alt="">
                                 </div>
                                 <div class="details">
-                                    <a href="image-post.html">
+                                    <a href="/front/hdad">
                                         <h6>网络安全中的那些事</h6>
                                     </a>
                                     <ul class="meta">

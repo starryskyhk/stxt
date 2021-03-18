@@ -73,14 +73,11 @@
     </select>
     <select id="selectAssociationById" resultMap="UserJoinAssociation">
         SELECT association.*,
-               type.NAME     as type,
-               `user`.name   as user_name,
-               member.status as member_status
+               type.NAME   AS type,
+               `user`.NAME AS user_name
         FROM association
-                     INNER JOIN member ON association.id = member.association_id
                      INNER JOIN type ON association.type_id = type.id
-                     LEFT JOIN user on association.student_id = `user`.id
-<!--                     TODO:待完成，应增加学生id-->
-        WHERE association.id = #{id}
+                     LEFT JOIN `user` ON association.student_id = `user`.id
+        where association.id = #{id}
     </select>
 </mapper>

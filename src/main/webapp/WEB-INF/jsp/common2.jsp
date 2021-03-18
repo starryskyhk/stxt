@@ -23,4 +23,5 @@
 <script src="/js1/owl.carousel.min.js"></script>
 <script src="/js1/mail-script.js"></script>
 <script src="/js1/main.js"></script>
+<script type="text/javascript" src="/js/popup.js"></script>
 <script type="text/javascript" src="/js/layer/layer.js"></script>

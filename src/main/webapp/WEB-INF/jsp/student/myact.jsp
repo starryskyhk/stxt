@@ -29,60 +29,7 @@
     <section class="latest-post-area pb-120">
         <div class="container no-padding">
             <div class="row">
-                <div class="col-lg-3">
-                    <div class="sidebars-area">
-                        <div class="single-sidebar-widget editors-pick-widget">
-                            <div class="editors-pick-post">
-                                <div class="feature-img-wrap relative">
-                                    <div class="feature-img relative" style="padding-left: 27%;">
-                                        <img id="d1" src="/img/about/user1.png" alt="">
-                                    </div>
-                                </div>
-                                <div class="details">
-                                    <a href="#">
-                                    </a>
-                                    <ul class="meta">
-                                        <li><a href="#"><span class="lnr lnr-user"></span>用户名：yhm</a></li>
-                                        <li><a href="#"><span class="lnr "></span>ID：21313</a></li>
-
-                                    </ul>
-                                    <p class="excert">
-                                        个人简介：还什么都没有写哦~
-                                    </p>
-                                </div>
-
-                                <div class="post-lists">
-                                    <div class="single-post d-flex flex-row">
-                                        <div class="detail" style="padding-left:34%;">
-                                            <a href="#"><h6>基本资料</h6></a>
-                                        </div>
-                                    </div>
-
-                                    <div class="single-post d-flex flex-row">
-                                        <div class="detail" style="padding-left:34%;">
-                                            <a href="#"><h6>我的社团</h6></a>
-                                        </div>
-                                    </div>
-
-                                    <div class="single-post d-flex flex-row">
-                                        <div class="detail" style="padding-left:34%;">
-                                            <a href="#"><h6>我的活动</h6></a>
-                                        </div>
-                                    </div>
-
-                                    <div class="single-post d-flex flex-row">
-                                        <div class="detail" style="padding-left:34%;">
-                                            <a href="#"><h6>退出登录</h6></a>
-                                        </div>
-                                    </div>
-
-
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
+                <%@include file="/WEB-INF/jsp/student/left.jsp" %>
                 <div class="col-lg-9 post-list">
                     <!-- Start latest-post Area -->
                     <div class="latest-post-wrap">
@@ -95,11 +42,11 @@
                                     <img class="img-fluid" src="/img/l1.jpg" alt="">
                                 </div>
                                 <ul class="tags">
-                                    <li><a href="adetails.html">点击详情</a></li>
+                                    <li><a href="/front/hdad">点击详情</a></li>
                                 </ul>
                             </div>
                             <div class="col-lg-7 post-right">
-                                <a href="image-post.html">
+                                <a href="/front/hdad">
                                     <h4>第二届网络征文暨摄影大赛</h4>
                                 </a>
                                 <ul class="meta">
@@ -116,62 +63,14 @@
                             <div class="col-lg-5 post-left">
                                 <div class="feature-img relative">
                                     <div class="overlay overlay-bg"></div>
-                                    <img class="img-fluid" src="/img/l2.jpg" alt="">
-                                </div>
-                                <ul class="tags">
-                                    <li><a href="adetails.html">点击详情</a></li>
-                                </ul>
-                            </div>
-                            <div class="col-lg-7 post-right">
-                                <a href="image-post.html">
-                                    <h4>学生诚信教育主题活动</h4>
-                                </a>
-                                <ul class="meta">
-                                    <li><a href="#"><span class="lnr lnr-user"></span>知识竞赛</a></li>
-                                    <li><a href="#"><span class="lnr lnr-calendar-full"></span>2020-7-2</a></li>
-                                    <li><a href="#"><span class="lnr lnr-bubble"></span>06 评论</a></li>
-                                </ul>
-                                <p>
-                                    现如今各个高校努力将诚信教育融入人才培养的各个方面，通过开展诚信教育、预防诈骗教育，远离不良贷、套路贷警示教育等，在学生中普及征信知识、金融知识、防诈骗知识，引导广大学生珍爱信用、理性消费，提高学生诚信意识、风险意识、法律意识和责任意识，帮助学生树立正确的人生观、价值观、消费观。
-                                </p>
-                            </div>
-                        </div>
-                        <div class="single-latest-post row align-items-center">
-                            <div class="col-lg-5 post-left">
-                                <div class="feature-img relative">
-                                    <div class="overlay overlay-bg"></div>
-                                    <img class="img-fluid" src="/img/l3.jpg" alt="">
-                                </div>
-                                <ul class="tags">
-                                    <li><a href="adetails.html">点击详情</a></li>
-                                </ul>
-                            </div>
-                            <div class="col-lg-7 post-right">
-                                <a href="image-post.html">
-                                    <h4>历史文化推送征文</h4>
-                                </a>
-                                <ul class="meta">
-                                    <li><a href="#"><span class="lnr lnr-user"></span>文艺活动</a></li>
-                                    <li><a href="#"><span class="lnr lnr-calendar-full"></span>2020-7-2</a></li>
-                                    <li><a href="#"><span class="lnr lnr-bubble"></span>06 评论</a></li>
-                                </ul>
-                                <p>
-                                    认真完成关于历史文化的文章内容，要确保有一定的历史文化，可以让读者增加对历史的兴趣，试读者对历史有着更加深入的了解。为了增强大学生对历史文化的了解，增强对历史的热爱之心。
-                                </p>
-                            </div>
-                        </div>
-                        <div class="single-latest-post row align-items-center">
-                            <div class="col-lg-5 post-left">
-                                <div class="feature-img relative">
-                                    <div class="overlay overlay-bg"></div>
                                     <img class="img-fluid" src="/img/l4.jpg" alt="">
                                 </div>
                                 <ul class="tags">
-                                    <li><a href="#">点击详情</a></li>
+                                    <li><a href="/front/hdad">点击详情</a></li>
                                 </ul>
                             </div>
                             <div class="col-lg-7 post-right">
-                                <a href="image-post.html">
+                                <a href="/front/hdad">
                                     <h4>悦享经典，阅读打卡</h4>
                                 </a>
                                 <ul class="meta">
@@ -192,6 +91,7 @@
 
                 </div>
             </div>
+        </div>
     </section>
 </div>
 

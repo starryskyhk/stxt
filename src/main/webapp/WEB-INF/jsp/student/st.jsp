@@ -38,14 +38,14 @@
                         </div>
                         <div class="top-post-details">
                             <ul class="tags">
-                                <li><a href="adetails.html">点击详情</a></li>
+                                <li><a href="/front/stad/19/171340139">点击详情</a></li>
                             </ul>
-                            <a href="image-post.html">
-                                <h4>大学生心理健康协会</h4>
+                            <a href="/front/stad/19/171340139">
+                                <h4>英语社团</h4>
                             </a>
                             <ul class="meta" id="info">
                                 <li><a href="#"><span class="lnr lnr-user"></span>校级</a></li>
-                                <li><a href="#"><span class="lnr lnr-bubble"></span>简介：大学生心理健康协会是在校团委和大学生心理健康指导中心的指导下，隶属于教育科学学院，一个面向全校大学生的思想政治性质的社团组织。</a>
+                                <li><a href="#"><span class="lnr lnr-bubble"></span>简介：学习英语的。</a>
                                 </li>
                             </ul>
                         </div>
@@ -61,9 +61,9 @@
                         </div>
                         <div class="top-post-details">
                             <ul class="tags">
-                                <li><a href="adetails.html">点击详情</a></li>
+                                <li><a href="/front/stad/19/171340139">点击详情</a></li>
                             </ul>
-                            <a href="image-post.html">
+                            <a href="/front/stad/19/171340139">
                                 <h4>马克思主义青年社团</h4>
                             </a>
                             <ul class="meta" id="info">
@@ -78,22 +78,6 @@
             </div>
         </div>
     </section>
-    <script>
-        var days = ["日", "一", "二", "三", "四", "五", "六"];
-
-        function showDT() {
-            var currentDT = new Date();
-            var y, m, date, day, hs, ms, ss, theDateStr;
-            y = currentDT.getFullYear(); //四位整数表示的年份
-            m = currentDT.getMonth() + 1; //月
-            date = currentDT.getDate(); //日
-            day = currentDT.getDay(); //星期
-            theDateStr = y + "年" + m + "月" + date + "日 星期" + days[day];
-            document.getElementById("theClock").innerHTML = theDateStr;
-            // setTimeout 在执行时,是在载入后延迟指定时间后,去执行一次表达式,仅执行一次
-            window.setTimeout(showDT, 1000);
-        }
-
-    </script>
+</div>
 </body>
 </html>

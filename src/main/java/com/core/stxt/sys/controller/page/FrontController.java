@@ -4,6 +4,7 @@ import com.core.stxt.sys.entity.po.Notice;
 import com.core.stxt.sys.entity.po.User;
 import com.core.stxt.sys.entity.vo.UserInAssociation;
 import com.core.stxt.sys.service.IAssociationService;
+import com.core.stxt.sys.service.IMemberService;
 import com.core.stxt.sys.service.INoticeService;
 import com.core.stxt.sys.service.IUserService;
 import io.swagger.models.auth.In;
@@ -31,6 +32,8 @@ public class FrontController {
     private IUserService userService;
     @Autowired
     private IAssociationService associationService;
+    @Autowired
+    private IMemberService memberService;
     //新闻动态
     @GetMapping("xwdt")
     public String xwdt(){
@@ -42,10 +45,12 @@ public class FrontController {
         return "student/xw_ade";
     }
     //社团详情
-    @GetMapping("stad/{id}")
-    public String stad(@PathVariable("id") Integer id,Model model){
+    @GetMapping("stad/{id}/{userId}")
+    public String stad(@PathVariable("id") Integer id,@PathVariable("userId") Integer userId,Model model){
         UserInAssociation association =  associationService.getAssociationInfoById(id);
+        Integer status = memberService.getStatusByIdAndAssId(id,userId);
         model.addAttribute("assInfo",association);
+        model.addAttribute("status",status);
         return "student/st_ade";
     }
     //社团
@@ -98,7 +103,7 @@ public class FrontController {
     //活动详情
     @GetMapping("hdad")
     public String hdad(){
-        return "student/hdad";
+        return "student/hd_ade";
     }
     //活动
     @GetMapping("hd")

@@ -1,5 +1,6 @@
 package com.core.stxt.sys.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.core.stxt.sys.entity.po.Member;
 import com.core.stxt.sys.mapper.MemberMapper;
 import com.core.stxt.sys.service.IMemberService;
@@ -24,5 +25,16 @@ public class MemberServiceImpl extends ServiceImpl<MemberMapper, Member> impleme
             this.removeById(id);
         }
         return true;
+    }
+
+    @Override
+    public Integer getStatusByIdAndAssId(Integer AssociationId, Integer userId) {
+        QueryWrapper<Member> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq(AssociationId!=null,"association_id",AssociationId).eq(userId!=null,"user_id",userId);
+        Member one = this.getOne(queryWrapper);
+        if(one==null){
+            return null;
+        }
+        return one.getStatus();
     }
 }

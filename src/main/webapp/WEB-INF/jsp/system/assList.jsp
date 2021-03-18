@@ -213,7 +213,7 @@
 
     //添加
     function addAssociation(id) {
-        var url = '/back/assList';
+        var url = '/back/addAss';
         popup.open_add("新增社团", url);
     }
     //查询社团成员

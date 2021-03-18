@@ -30,7 +30,7 @@
                                     <h4>${notice.title}</h4>
                                 </a>
                                 <ul class="meta">
-                                    <li><a href="/front/${notice.id}"><span class="lnr lnr-calendar-full"></span>${notice.createTime}</a></li>
+                                    <li><a href="#">${notice.id}"><span class="lnr lnr-calendar-full"></span>${notice.createTime}</a></li>
                                 </ul>
                                 <p class="excert">
                                    ${notice.content}

@@ -16,22 +16,22 @@
                         </li>
                         <li class="menu-has-children "><a href="">多彩社团</a>
                             <ul>
-                                <li><a href="#">思想政治类</a></li>
-                                <li><a href="#">学术科技类</a></li>
-                                <li><a href="#">创新创业类</a></li>
-                                <li><a href="#">文化体育类</a></li>
-                                <li><a href="#">志愿公益类</a></li>
-                                <li><a href="#">自律互助类</a></li>
+                                <li><a href="/front/st">思想政治类</a></li>
+                                <li><a href="/front/st">学术科技类</a></li>
+                                <li><a href="/front/st">创新创业类</a></li>
+                                <li><a href="/front/st">文化体育类</a></li>
+                                <li><a href="/front/st">志愿公益类</a></li>
+                                <li><a href="/front/st">自律互助类</a></li>
                             </ul>
 
                         <li class="menu-has-children "><a href="">精彩活动</a>
                             <ul>
-                                <li><a href="#">思想政治类</a></li>
-                                <li><a href="#">学术科技类</a></li>
-                                <li><a href="#">创新创业类</a></li>
-                                <li><a href="#">文化体育类</a></li>
-                                <li><a href="#">志愿公益类</a></li>
-                                <li><a href="#">自律互助类</a></li>
+                                <li><a href="/front/hd">思想政治类</a></li>
+                                <li><a href="/front/hd">学术科技类</a></li>
+                                <li><a href="/front/hd">创新创业类</a></li>
+                                <li><a href="/front/hd">文化体育类</a></li>
+                                <li><a href="/front/hd">志愿公益类</a></li>
+                                <li><a href="/front/hd">自律互助类</a></li>
                             </ul>
                         </li>
                         <li><a href="/front/xwdt">新闻动态</a></li>

@@ -154,6 +154,10 @@ public class AssBackController {
     public String login(){
         return "login";
     }
+    @GetMapping("editInfo")
+    public String editInfo(){
+        return "assSystem/editInfo";
+    }
 
 
 

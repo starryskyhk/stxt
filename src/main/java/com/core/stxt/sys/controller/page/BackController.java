@@ -159,7 +159,10 @@ public class BackController {
     public String login(){
         return "login";
     }
-
+    @GetMapping("editInfo")
+    public String editInfo(){
+        return "system/editInfo";
+    }
 
 
 

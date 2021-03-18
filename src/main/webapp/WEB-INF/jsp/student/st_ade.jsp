@@ -58,13 +58,17 @@
                             </blockquote>
 
                             <div class="navigation-wrap justify-content-between d-flex">
-                                <c:if test="${assInfo.memberStatus!=0}">
-                                    <a id="join" class="next" href="#" style="margin-left: 80%; ">我要加入<span
+                                <c:if test="${status==null}">
+                                    <a id="join" class="next"  style="margin-left: 80%; ">我要加入<span
                                             class="lnr lnr-plus-circle"></span></a>
                                 </c:if>
 
-                                <c:if test="${assInfo.memberStatus==1}">
-                                    <a id="join" class="next" href="#" style="margin-left: 80%; ">已加入<span
+                                <c:if test="${status==0}">
+                                    <a  class="next" href="" style="margin-left: 80%; background-color: grey ">已加入<span
+                                            class="lnr lnr-plus-circle"></span></a>
+                                </c:if>
+                                <c:if test="${status==1}">
+                                    <a  class="next" href="" style="margin-left: 80%; background-color: grey">正在审核中<span
                                             class="lnr lnr-plus-circle"></span></a>
                                 </c:if>
 
@@ -166,9 +170,9 @@
             success: function (response) {
                 if (response.code == 0) {
                     //成功，显示提示消息，并刷新表格
-                    popup.layermsg("申请成功，请等待审核", 'tb_departments');
+                    layer.alert("申请成功，请等待审核");
                     setTimeout(function () {
-                        location.reload();
+                       location.reload();
                     }, 2000);
                 } else {
                     layer.alert(response.msg, {icon: 5, anim: 6});

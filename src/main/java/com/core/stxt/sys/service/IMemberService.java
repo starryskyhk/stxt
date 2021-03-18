@@ -20,4 +20,12 @@ public interface IMemberService extends IService<Member> {
      * @return
      */
     boolean deleteIds(List<String> ids);
+
+    /**
+     * 获取学生在该社团的状态
+     * @param id
+     * @param userId
+     * @return
+     */
+    Integer getStatusByIdAndAssId(Integer id, Integer userId);
 }
