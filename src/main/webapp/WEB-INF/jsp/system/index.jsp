@@ -139,7 +139,7 @@
                 <ul class="nav navbar-top-links navbar-right">
                     <li class="dropdown">
                         <b>
-                            <p style="font-size: 18px;color:black;font-family: '黑体';padding-top: 13px">系统管理员:${sessionScope.user.name},您好<a style="font-size: 18px;color:blue;font-family: '黑体';padding-top: 13px" href="/exit">退出</a></p>
+                            <p style="font-size: 18px;color:black;font-family: '黑体';padding-top: 13px">系统管理员:${sessionScope.user.name}老师,您好<a style="font-size: 18px;color:blue;font-family: '黑体';padding-top: 13px" href="/exit">退出</a></p>
                         </b>
                     </li>
 

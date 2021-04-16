@@ -26,7 +26,7 @@
                         <div class="form-group">
                             <label class="col-sm-3 control-label">活动内容</label>
                             <div class="col-sm-8">
-                                <textarea disabled  placeholder="请输入社团简介"  name="content" id="content">
+                                <textarea class="form-control" disabled  placeholder="请输入社团简介"  name="content" id="content">
                                     ${activity.content}
                                 </textarea>
                             </div>

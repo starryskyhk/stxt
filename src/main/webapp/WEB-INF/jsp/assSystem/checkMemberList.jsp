@@ -108,8 +108,8 @@
     // 操作按钮
     function btnGroup() {
         var html =
-            '<a href="#!" class="btn btn-xs btn-danger m-r-5 del-btn" title="删除" data-toggle="tooltip"><i class="mdi mdi-delete"></i></a>'+
-            '<a href="#!" class="btn btn-xs btn-danger m-r-5 edit-btn" title="删除" data-toggle="tooltip"><i class="mdi mdi-delete"></i></a>' ;
+            '<a href="#!" class="btn btn-xs btn-success m-r-5 edit-btn" title="编辑" data-toggle="tooltip"><i class="mdi mdi-pencil"></i></a>' +
+            '<a href="#!" class="btn btn-xs btn-danger m-r-5 del-btn" title="删除" data-toggle="tooltip"><i class="mdi mdi-delete"></i></a>' ;
         return html;
     }
 

@@ -25,12 +25,12 @@
 
                     <c:forEach items="${notices}" var="notice" >
                         <div class="single-latest-post row align-items-center">
-                            <div class="col-lg-7 post-right">
+                            <div  style="padding-left:5%;padding-right: 5%" class="col-lg-13 post-right">
                                 <a href="#">
                                     <h4>${notice.title}</h4>
                                 </a>
                                 <ul class="meta">
-                                    <li><a href="#">${notice.id}"><span class="lnr lnr-calendar-full"></span>${notice.createTime}</a></li>
+                                    <li><a href="#">${notice.id}&nbsp;&nbsp;&nbsp;<span class="lnr lnr-calendar-full"></span>${notice.createTime}</a></li>
                                 </ul>
                                 <p class="excert">
                                    ${notice.content}
